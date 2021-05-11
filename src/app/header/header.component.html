@@ -1,1 +1,30 @@
-<p>header works!</p>
+<mat-toolbar color="warn">
+  <button mat-icon-button>
+    <mat-icon (click)="navService.touggleNav()">menu</mat-icon>
+  </button>
+  <span style="margin-left: 10px" #appTitle>{{ title }}</span>
+  <div></div>
+  <a mat-button style="margin-left: 10px" routerLink="/notice"> Notices </a>
+  <span class="example-spacer"></span>
+  <button mat-raised-button
+          [matMenuTriggerFor]="menu"
+          class="studentButton"
+          (click)="rotate()"
+          (menuClosed)="state = 'collapsed'"
+  >
+    <span style="margin-left: 5px"> Arbin Roy </span>
+    <mat-icon [@indicatorRotate]="state">
+      expand_more
+    </mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon> person </mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon> logout </mat-icon>
+      <span> Logout </span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
