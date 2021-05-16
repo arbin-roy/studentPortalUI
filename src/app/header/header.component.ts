@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.breakpointObserver.observe(['(max-width: 598px)']).subscribe((state: BreakpointState) => {
       if (state.matches){
-        this.title = 'B.C. Roy';
+        this.title = 'BCREC-APC';
       }else {
         this.title = 'Dr. B.C. Roy Engineering College';
       }

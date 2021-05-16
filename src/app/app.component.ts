@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import {NavService} from './services/nav.service';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,18 +15,18 @@ export class AppComponent implements AfterViewInit, OnInit{
     {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
     {name: 'Notes & PDF\'s & Ebooks', route: '#', icon: 'notes'},
     {name: 'Syllabus', route: '/syllabus', icon: 'book'},
-    {name: 'Upcoming Examinations', route: '#', icon: 'edit'},
+    {name: 'Upcoming Examinations', route: '/studentlogin', icon: 'edit'},
     {name: 'Upcoming Activities', route: '#', icon: 'local_activity'},
   ];
 
-  constructor(public navService: NavService, private route: Router) {}
+  constructor(public navService: NavService) {}
 
   // tslint:disable-next-line:typedef
   ngAfterViewInit() {
     this.navService.appDrawer = this.sideNav;
   }
 
-  ngOnInit(): void {
-    this.route.navigate(['/lecturevideos']);
+  ngOnInit() {
+    
   }
 }
