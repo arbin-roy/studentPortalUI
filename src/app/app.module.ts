@@ -10,6 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { NavService} from './services/nav.service';
 import { SyllabusComponent } from './syllabus/syllabus.component';
 import { VideoComponent } from './video/video.component';
+import {LoginstudentComponent} from './loginstudent/loginstudent.component'
+import {ReactiveFormsModule} from '@angular/forms'
+import {HttpClientModule} from '@angular/common/http'
+import { AuthserviceService} from './services/authservice.service'
 
 @NgModule({
   declarations: [
@@ -17,16 +21,20 @@ import { VideoComponent } from './video/video.component';
     HeaderComponent,
     routingPaths,
     SyllabusComponent,
-    VideoComponent
+    VideoComponent,
+    LoginstudentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    
   ],
-  providers: [NavService],
+  providers: [NavService,AuthserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

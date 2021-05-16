@@ -1,28 +1,30 @@
 <mat-tab-group mat-align-tabs="center">
-  <mat-tab *ngFor="let subject of video" [label]= subject.subject>
+  <mat-tab *ngFor="let subject of video" [label]=subject.subject >
+    <div>
+    <div *ngIf="subject.videos.length == 0">
+      <p style="text-align: center"> No videos available for this subject</p>
+    </div>
     <mat-card class="example-card" *ngFor="let video of subject.videos">
       <mat-card-header>
         <mat-card-title> {{ video.title }}</mat-card-title>
       </mat-card-header>
-      <img
-        mat-card-image
-        src="https://www.pngkit.com/png/full/267-2678423_bacteria-video-thumbnail-default.png"
-        alt="Loading..."
-        class="example-header-image"
-      >
+      <img mat-card-image src="https://www.pngkit.com/png/full/267-2678423_bacteria-video-thumbnail-default.png"
+        alt="Loading..." class="example-header-image">
       <mat-card-content>
         <p style="text-align: center">
           {{ video.desc ? video.desc : 'No description provided'}}
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="openDialog(video)"> <mat-icon> visibility </mat-icon> WATCH </button>
-        <button mat-button> <mat-icon> file_download </mat-icon> DOWNLOAD </button>
+        <button mat-button (click)="openDialog(video)">
+          <mat-icon> visibility </mat-icon> WATCH
+        </button>
+        <button mat-button>
+          <mat-icon> file_download </mat-icon> DOWNLOAD
+        </button>
       </mat-card-actions>
     </mat-card>
-    <div *ngIf="subject.videos.length == 0">
-      <p style="text-align: center"> No videos available for this subject</p>
-    </div>
+  </div>
   </mat-tab>
   <router-outlet></router-outlet>
 </mat-tab-group>
