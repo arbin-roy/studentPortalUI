@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
+  {path:'', redirectTo:'/login', pathMatch:'full'},
   {path: 'lecturevideos', component: LectureVideoComponent},
   {path: 'syllabus', component: SyllabusComponent},
   {path: 'notice', component: NoticesComponent},
-  {path:'studentlogin', component:LoginstudentComponent}
+  {path:'login', component:LoginstudentComponent}
 ];
 
 @NgModule({

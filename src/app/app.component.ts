@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NavService} from './services/nav.service';
 import {Router} from '@angular/router';
-
+import {LoginstudentComponent} from './loginstudent/loginstudent.component';
+import {AuthserviceService} from './services/authservice.service'
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent implements AfterViewInit, OnInit{
     {name: 'Upcoming Activities', route: '#', icon: 'local_activity'},
   ];
 
-  constructor(public navService: NavService) {}
+  constructor(public navService: NavService, private router: Router) {}
 
   // tslint:disable-next-line:typedef
   ngAfterViewInit() {

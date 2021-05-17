@@ -31,8 +31,7 @@ import { AuthserviceService} from './services/authservice.service'
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    
+    HttpClientModule
   ],
   providers: [NavService,AuthserviceService],
   bootstrap: [AppComponent]
