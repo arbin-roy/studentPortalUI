@@ -1,39 +1,43 @@
 <div>
-<mat-card >
+  <mat-card>
     <mat-card-content>
       <div class="header">
         <P>Sign Into Your Account </P>
       </div>
       <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+        <div>
+          <select class="custom-select"  formControlName="entity">
+            <option value="">Choose your Role</option>
+            <option>Admin</option>
+            <option>Student</option>
+            <option>Teacher</option>
+         </select>
+        </div>
         <div class="rollInput">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Roll</mat-label>
-            <input
-              formControlName="roll"
-              matInput
-              placeholder="Enter roll number" required
-            />
+            <input formControlName="roll" matInput placeholder="Enter roll number" required />
             <mat-error *ngIf="!loginForm.controls['roll'].valid">
-                give valid roll number
+              give valid roll number
             </mat-error>
           </mat-form-field>
         </div>
 
         <div>
-         
+
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
             <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
-            <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>
                 {{hide ? 'visibility_off' : 'visibility'}}
-            </mat-icon>
-        </button>
-        <mat-error *ngIf="!loginForm.controls['password'].valid">
-            Password must be minimum 8 characters
-          </mat-error>
-        </mat-form-field>
+              </mat-icon>
+            </button>
+            <mat-error *ngIf="!loginForm.controls['password'].valid">
+              Password must be minimum 8 characters
+            </mat-error>
+          </mat-form-field>
         </div>
         <button mat-flat-button color="primary">Login</button>
       </form>

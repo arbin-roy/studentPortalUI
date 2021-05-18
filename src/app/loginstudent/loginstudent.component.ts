@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { AuthserviceService } from '../services/authservice.service';
+import {Router} from '@angular/router'
+
 @Component({
   selector: 'app-loginstudent',
   templateUrl: './loginstudent.component.html',
@@ -10,7 +12,9 @@ export class LoginstudentComponent implements OnInit {
 
   hide: boolean = false;
 
-  constructor(public fb: FormBuilder, private authService:AuthserviceService) {
+  constructor(public fb: FormBuilder,
+     private authService: AuthserviceService,
+     public router:Router) {
   }
 
   ngOnInit() {
@@ -18,24 +22,33 @@ export class LoginstudentComponent implements OnInit {
   }
 
   loginForm: FormGroup = this.fb.group({
+    entity:['',[Validators.required]],
     roll: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
     password: ['', [Validators.required, Validators.minLength(8)]]
   })
 
-
+ 
   onLogin() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(result=>{
-        if(result.success){
-          console.log(result.data);
-          alert(result.data);
+      console.log(this.loginForm.value)
+      this.authService.login(this.loginForm.value.entity,this.loginForm.value).subscribe(result => {
+        var data={
+          form:this.loginForm.value,
+          data:result.data
         }
-        else{
-          alert("give correct credentials.")
-        }
-      });
+        this.authService.savedata(data);
+        this.router.navigate(["/lecturevideos"])
+      },
+        error => {
+          alert("Give correct credentials")
+        },
+        () => {
+          // No errors, route to new page
+        })
     }
-    console.log("error");
+    else {
+      console.log("error");
+    }
   }
 
 }

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NavService} from '../services/nav.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
+import {AuthserviceService} from '../services/authservice.service'
+import {Router} from "../../../node_modules/@angular/router"
 
 @Component({
   selector: 'app-header',
@@ -20,8 +22,22 @@ export class HeaderComponent implements OnInit {
   title = 'Dr. B.C. Roy Engineering College';
   expanded: boolean;
   state = 'collapsed';
+  public logged:boolean=false;
+  public username:string;
+  public role:string;
 
-  constructor(public navService: NavService, private breakpointObserver: BreakpointObserver) { }
+
+  constructor(public navService: NavService, 
+    private breakpointObserver: BreakpointObserver, 
+    public auth:AuthserviceService,
+    public router:Router) 
+    { 
+     this.auth.isloggedin.subscribe(res=>{
+          this.logged=true;
+          this.username=res.data.name;
+          this.role= res.form.entity;
+     })
+  }
 
   ngOnInit(): void {
     this.breakpointObserver.observe(['(max-width: 598px)']).subscribe((state: BreakpointState) => {
@@ -35,6 +51,11 @@ export class HeaderComponent implements OnInit {
 
   rotate() {
     this.state = (this.state === 'collapsed' ? 'expanded' : 'collapsed');
+  }
+  onLogout(){
+     this.router.navigate(["/login" ])
+     this.logged=false;
+     console.log("logout works")
   }
 
 }
