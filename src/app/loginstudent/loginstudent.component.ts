@@ -23,7 +23,7 @@ export class LoginstudentComponent implements OnInit {
 
   loginForm: FormGroup = this.fb.group({
     entity:['',[Validators.required]],
-    roll: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+    roll: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(8)]]
   })
 
