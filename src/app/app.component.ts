@@ -46,9 +46,8 @@ export class AppComponent implements AfterViewInit, OnInit{
           ]
           break;
         default:
-          this.navItems=[
-            {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
-          ]
+          this.navItems=[]
+          
       }
      
 })

@@ -19,12 +19,13 @@ import {Router} from "../../../node_modules/@angular/router"
   ]
 })
 export class HeaderComponent implements OnInit {
-  title = 'Dr. B.C. Roy Engineering College';
+  title = 'BCREC-APC';
   expanded: boolean;
   state = 'collapsed';
   public logged:boolean=false;
   public username:string;
   public role:string;
+  
 
 
   constructor(public navService: NavService, 
@@ -40,13 +41,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.breakpointObserver.observe(['(max-width: 598px)']).subscribe((state: BreakpointState) => {
+    /* this.breakpointObserver.observe(['(max-width: 598px)']).subscribe((state: BreakpointState) => {
       if (state.matches){
         this.title = 'BCREC-APC';
       }else {
         this.title = 'Dr. B.C. Roy Engineering College';
       }
-    });
+    }); */
   }
 
   rotate() {

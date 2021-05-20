@@ -1,19 +1,22 @@
 <div>
-  <mat-card>
+  <mat-card style="background-color:mintcream">
     <mat-card-content>
       <div class="header">
         <P>Sign Into Your Account </P>
       </div>
       <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
         <div>
-          <select class="custom-select"  formControlName="entity">
-            <option value="">Choose your Role</option>
-            <option>Admin</option>
-            <option>Student</option>
-            <option>Teacher</option>
-         </select>
+          <mat-form-field>
+          <mat-select  formControlName="entity">
+            <mat-select [(value)]="selected"></mat-select>
+            <mat-option value="">Choose your Role</mat-option>
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="Student">Student</mat-option>
+            <mat-option value="Teacher">Teacher</mat-option>
+         </mat-select>
+        </mat-form-field>
         </div>
-        <div class="rollInput">
+        <div class="rollInput" *ngIf = "loginForm.value.entity==='Student'">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Roll</mat-label>
             <input formControlName="roll" matInput placeholder="Enter roll number" required />
@@ -22,10 +25,28 @@
             </mat-error>
           </mat-form-field>
         </div>
+        <div class="rollInput" *ngIf = "loginForm.value.entity==='Teacher'">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>TeacherId</mat-label>
+            <input formControlName="roll" matInput placeholder="Enter teacherId" required />
+            <mat-error *ngIf="!loginForm.controls['roll'].valid">
+              give valid roll number
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="rollInput" *ngIf = "loginForm.value.entity==='Admin'">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>AdminId</mat-label>
+            <input formControlName="roll" matInput placeholder="Enter Adminid" required />
+            <mat-error *ngIf="!loginForm.controls['roll'].valid">
+              give valid roll number
+            </mat-error>
+          </mat-form-field>
+        </div>
 
         <div>
 
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width" appearance="outline"  *ngIf = "loginForm.value.entity">
             <mat-label>Password</mat-label>
             <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
@@ -39,7 +60,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-        <button mat-flat-button color="primary">Login</button>
+        <button mat-flat-button color="primary" [disabled]="!loginForm.value.entity">Login</button>
       </form>
     </mat-card-content>
   </mat-card>
