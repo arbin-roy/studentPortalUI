@@ -11,6 +11,7 @@ import {Router} from '@angular/router'
 export class LoginstudentComponent implements OnInit {
 
   hide: boolean = false;
+  selected=""
 
   constructor(public fb: FormBuilder,
      private authService: AuthserviceService,
