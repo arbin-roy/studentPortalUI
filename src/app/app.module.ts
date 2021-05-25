@@ -8,12 +8,14 @@ import { MaterialModule} from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './header/header.component';
 import { NavService} from './services/nav.service';
-import { SyllabusComponent } from './syllabus/syllabus.component';
+import { SyllabusComponent } from './student/syllabus/syllabus.component';
 import { VideoComponent } from './video/video.component';
-import {LoginstudentComponent} from './loginstudent/loginstudent.component'
-import {ReactiveFormsModule} from '@angular/forms'
-import {HttpClientModule} from '@angular/common/http'
-import { AuthserviceService} from './services/authservice.service'
+import { LoginstudentComponent } from './loginstudent/loginstudent.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthserviceService} from './services/authservice.service';
+import { UploadVideoComponent } from './teacher/upload-video/upload-video.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AuthserviceService} from './services/authservice.service'
     routingPaths,
     SyllabusComponent,
     VideoComponent,
-    LoginstudentComponent
+    LoginstudentComponent,
+    UploadVideoComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { AuthserviceService} from './services/authservice.service'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [NavService,AuthserviceService],
+  providers: [NavService, AuthserviceService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthserviceService } from '../services/authservice.service';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-loginstudent',
@@ -10,46 +10,43 @@ import {Router} from '@angular/router'
 })
 export class LoginstudentComponent implements OnInit {
 
-  hide: boolean = false;
-  selected=""
+  hide = false;
+  selected = '';
+  loginForm: FormGroup = this.fb.group({
+    entity: ['', [Validators.required]],
+    roll: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(8)]]
+  });
 
   constructor(public fb: FormBuilder,
-     private authService: AuthserviceService,
-     public router:Router) {
-  }
+              private authService: AuthserviceService,
+              public router: Router) {}
 
   ngOnInit() {
     this.loginForm;
   }
 
-  loginForm: FormGroup = this.fb.group({
-    entity:['',[Validators.required]],
-    roll: ['', [Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
-  })
-
- 
   onLogin() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value)
-      this.authService.login(this.loginForm.value.entity,this.loginForm.value).subscribe(result => {
-        var data={
-          form:this.loginForm.value,
-          data:result.data
-        }
+      console.log(this.loginForm.value);
+      this.authService.login(this.loginForm.value.entity, this.loginForm.value).subscribe(result => {
+        console.log(result);
+        const data = {
+          form: this.loginForm.value,
+          data: result.data,
+          token: result.token
+        };
         this.authService.savedata(data);
-        this.router.navigate(["/lecturevideos"])
+        this.router.navigate(['/lecturevideos']);
       },
         error => {
-          alert("Give correct credentials")
+          alert('Give correct credentials');
         },
-        () => {
-          // No errors, route to new page
-        })
+        () => {}
+        );
     }
     else {
-      console.log("error");
+      console.log('error');
     }
   }
-
 }

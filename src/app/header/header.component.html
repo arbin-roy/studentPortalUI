@@ -2,7 +2,7 @@
   <button *ngIf ="logged" mat-icon-button >
     <mat-icon  (click)="navService.touggleNav()">menu</mat-icon>
   </button>
-  <span style="margin-left: 10px" #appTitle>{{ title }}</span>
+  <span style="margin-left: 10px">{{ title }}</span>
   <div></div>
   <a *ngIf="logged" mat-button style="margin-left: 10px" routerLink="/notice"> Notices </a>
   <span class="example-spacer"></span>
@@ -25,6 +25,5 @@
       <span> Logout </span>
     </button>
   </mat-menu>
-
 </div>
 </mat-toolbar>
