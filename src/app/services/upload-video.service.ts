@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
-
-  public studentLogin
+export class UploadVideoService {
 
   constructor() { }
 }
