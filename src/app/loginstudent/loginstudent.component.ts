@@ -37,7 +37,10 @@ export class LoginstudentComponent implements OnInit {
           token: result.token
         };
         this.authService.savedata(data);
-        this.router.navigate(['/lecturevideos']);
+        switch (this.loginForm.value.entity) {
+          case 'Teacher': this.router.navigate(['/upload']); break;
+          case 'Student': this.router.navigate(['/lecturevideos']); break;
+        }
       },
         error => {
           alert('Give correct credentials');

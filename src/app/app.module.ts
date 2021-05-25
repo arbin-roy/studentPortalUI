@@ -14,8 +14,8 @@ import { LoginstudentComponent } from './loginstudent/loginstudent.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthserviceService} from './services/authservice.service';
-import { UploadVideoComponent } from './teacher/upload-video/upload-video.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import {UploadVideoComponent} from './teacher/upload-video/upload-video.component';
 
 @NgModule({
   declarations: [

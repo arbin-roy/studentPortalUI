@@ -10,8 +10,9 @@ export class UploadGuardService implements CanActivate{
   constructor(private auth: AuthserviceService, private router: Router) { }
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;
-    if (!this.auth.isAuthenticated() || expectedRole !== 'Teacher'){
+    if (!this.auth.isAuthenticated() && expectedRole !== sessionStorage.getItem('_role')){
       this.router.navigate(['login']);
+      sessionStorage.clear();
       return false;
     }
     return true;

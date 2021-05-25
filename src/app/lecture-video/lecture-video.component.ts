@@ -19,7 +19,7 @@ export class LectureVideoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDialog(video: any) {
+  openDialog(video: any): void {
     this.dialog.open(VideoComponent, { disableClose: true, data: video });
   }
 

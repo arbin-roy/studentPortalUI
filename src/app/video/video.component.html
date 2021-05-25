@@ -1,7 +1,7 @@
 <h2 mat-dialog-title> {{ video.title }} </h2>
 <mat-dialog-content>
-  <video width="450px" height="250px" controls autoplay style="background-color: black">
-    <source src="https://studentportal-api.herokuapp.com/uploads/videos/1620751263739%20sd.mp4" type="video/mp4">
+  <video class="videoBoundary" controls autoplay style="background-color: black">
+    <source [src]="'http://localhost:5678/' + video.link" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <p> {{ video.desc ? video.desc : 'No description provided'}} </p>

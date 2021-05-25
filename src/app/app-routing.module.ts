@@ -5,6 +5,7 @@ import { SyllabusComponent} from './student/syllabus/syllabus.component';
 import { NoticesComponent} from './notices/notices.component';
 import { LoginstudentComponent } from './loginstudent/loginstudent.component';
 import { UploadComponent} from './teacher/upload/uploadvideo.component';
+import { UploadedVideoComponent } from './teacher/uploaded-video/uploaded-video.component';
 import { UploadGuardService } from './services/upload-guard.service';
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {path: 'notice', component: NoticesComponent},
   {path: 'login', component: LoginstudentComponent},
   {path: 'upload', component: UploadComponent, canActivate: [UploadGuardService], data: {
+      expectedRole: 'Teacher'
+    }
+  },
+  {path: 'uploadedvideos', component: UploadedVideoComponent, canActivate: [UploadGuardService], data: {
       expectedRole: 'Teacher'
     }
   }
@@ -30,5 +35,6 @@ export const routingPaths = [
   SyllabusComponent,
   NoticesComponent,
   LoginstudentComponent,
-  UploadComponent
+  UploadComponent,
+  UploadedVideoComponent
 ];

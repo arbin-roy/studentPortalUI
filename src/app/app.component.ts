@@ -38,8 +38,8 @@ export class AppComponent implements AfterViewInit, OnInit{
           break;
         case 'Teacher':
           this.navItems = [
-            {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
-            {name: 'Upload Video', route: '/upload', icon: 'upload'}
+            {name: 'Upload', route: '/upload', icon: 'upload'},
+            {name: 'Uploaded Videos', route: '/uploadedvideos', icon: 'upload'}
           ];
           break;
         case 'Admin':
@@ -65,8 +65,8 @@ export class AppComponent implements AfterViewInit, OnInit{
           break;
         case 'Teacher':
           this.navItems = [
-            {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
-            {name: 'Upload Video', route: '/upload', icon: 'upload'}
+            {name: 'Upload', route: '/upload', icon: 'upload'},
+            {name: 'Uploaded Videos', route: '/uploadedvideos', icon: 'upload'}
           ];
           break;
         case 'Admin':
