@@ -10,9 +10,9 @@ import { UploadVideoComponent} from '../upload-video/upload-video.component';
 export class UploadComponent implements OnInit {
   uploadItems = [
     {
-      title: 'PDF',
+      title: 'PDF or Notes',
       image: 'https://i2.wp.com/www.thenfapost.com/wp-content/uploads/2020/08/unnamed-2.png?fit=512%2C512&ssl=1',
-      desc: 'Click here to upload PDF\'s'
+      desc: 'Click here to upload PDF\'s or notes'
     },
     {
       title: 'Video',
