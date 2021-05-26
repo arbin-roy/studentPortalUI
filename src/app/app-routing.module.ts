@@ -4,8 +4,9 @@ import { LectureVideoComponent} from './lecture-video/lecture-video.component';
 import { SyllabusComponent} from './student/syllabus/syllabus.component';
 import { NoticesComponent} from './notices/notices.component';
 import { LoginstudentComponent } from './loginstudent/loginstudent.component';
-import { UploadComponent} from './teacher/upload/uploadvideo.component';
+import { UploadComponent} from './teacher/upload/upload.component';
 import { UploadedVideoComponent } from './teacher/uploaded-video/uploaded-video.component';
+import { UploadedNoteComponent } from './teacher/uploaded-note/uploaded-note.component';
 import { UploadGuardService } from './services/upload-guard.service';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
     }
   },
   {path: 'uploadedvideos', component: UploadedVideoComponent, canActivate: [UploadGuardService], data: {
+      expectedRole: 'Teacher'
+    }
+  },
+  {path: 'uploadednotes', component: UploadedNoteComponent, canActivate: [UploadGuardService], data: {
       expectedRole: 'Teacher'
     }
   }

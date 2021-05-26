@@ -17,4 +17,12 @@ export class UploadedVideosService {
       headers: headerConfig
     });
   }
+
+  getNotes(): Observable<any> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', sessionStorage.getItem('_token'));
+    return this.http.get(`${baseurl}teacher/uploadedNotes`, {
+      headers: headerConfig
+    });
+  }
 }

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadvideoComponent } from './uploadvideo.component';
+import { UploadvideoComponent } from './upload.component';
 
 describe('UploadvideoComponent', () => {
   let component: UploadvideoComponent;

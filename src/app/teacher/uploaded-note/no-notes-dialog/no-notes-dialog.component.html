@@ -1,1 +1,8 @@
-<p>no-notes-dialog works!</p>
+<h2 mat-dialog-title> Not Found </h2>
+<mat-dialog-content>
+  <p>You have not uploaded any notes yet</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button mat-dialog-close> Close </button>
+  <button mat-raised-button color="primary" (click)="uploadNote()"> Upload Note </button>
+</mat-dialog-actions>

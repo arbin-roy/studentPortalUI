@@ -1,7 +1,7 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { UploadVideoService} from '../../services/upload-video.service';
+import { TeacherUploadService} from '../../../services/teacher-upload.service';
 import { HttpEventType} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -34,7 +34,7 @@ export class UploadVideoComponent implements OnInit, OnDestroy {
 
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,
-              private uploadVideoService: UploadVideoService,
+              private uploadVideoService: TeacherUploadService,
               private snackBar: MatSnackBar,
               private dialogRef: MatDialogRef<UploadVideoComponent>
   ) { }

@@ -27,6 +27,7 @@ export class UploadedVideoComponent implements OnInit {
           this.snackBar.open(error.error.message, 'Close'); break;
         case 401:
           this.snackBar.open(error.error, 'Close'); break;
+        case 0: this.snackBar.open('Server connection establishment failed', 'Close'); break;
       }
     });
   }

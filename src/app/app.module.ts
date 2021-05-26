@@ -15,7 +15,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthserviceService} from './services/authservice.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
-import {UploadVideoComponent} from './teacher/upload-video/upload-video.component';
+import {UploadVideoComponent} from './teacher/upload/upload-video/upload-video.component';
+import { UploadedNoteComponent } from './teacher/uploaded-note/uploaded-note.component';
+import { NoNotesDialogComponent } from './teacher/uploaded-note/no-notes-dialog/no-notes-dialog.component';
+import { UploadNoteComponent } from './teacher/upload/upload-note/upload-note.component';
+import { PdfViewerModule} from 'ng2-pdf-viewer';
+import { ViewPdfComponent } from './teacher/uploaded-note/view-pdf/view-pdf.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,11 @@ import {UploadVideoComponent} from './teacher/upload-video/upload-video.componen
     SyllabusComponent,
     VideoComponent,
     LoginstudentComponent,
-    UploadVideoComponent
+    UploadVideoComponent,
+    UploadedNoteComponent,
+    NoNotesDialogComponent,
+    UploadNoteComponent,
+    ViewPdfComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,8 @@ import {UploadVideoComponent} from './teacher/upload-video/upload-video.componen
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PdfViewerModule
   ],
   providers: [NavService, AuthserviceService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],

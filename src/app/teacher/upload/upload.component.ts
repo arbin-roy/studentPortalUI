@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { UploadVideoComponent} from '../upload-video/upload-video.component';
+import { UploadVideoComponent} from './upload-video/upload-video.component';
+import { UploadNoteComponent} from './upload-note/upload-note.component';
 
 @Component({
   selector: 'app-upload',
@@ -35,7 +36,7 @@ export class UploadComponent implements OnInit {
   openDialog(item: string) {
     switch (item) {
       case 'Video': this.dialog.open(UploadVideoComponent, {disableClose: true, data: item}); break;
-      case 'PDF': console.log('PDF Clicked'); break;
+      case 'PDF or Notes': this.dialog.open(UploadNoteComponent, {disableClose: true, data: item}); break;
     }
   }
 

@@ -1,1 +1,26 @@
-<p>uploaded-note works!</p>
+<div class="container">
+  <strong style="margin-top: 20px">{{dialogClosed ? dialogClosed: ''}}</strong>
+  <mat-card class="example-card" *ngFor="let note of notes">
+    <mat-card-header>
+      <mat-card-title> {{ note.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://www.pngkit.com/png/full/267-2678423_bacteria-video-thumbnail-default.png"
+         alt="Loading..." class="example-header-image">
+    <mat-card-content>
+      <p style="text-align: center">
+        {{ note.desc ? note.desc : 'No description provided'}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="center center">
+      <button mat-button (click)="view(note)">
+        <mat-icon> visibility </mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon> file_download </mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon> delete </mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
