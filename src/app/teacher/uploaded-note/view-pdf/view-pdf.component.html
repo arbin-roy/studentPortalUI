@@ -2,7 +2,7 @@
   <h2 mat-dialog-title>{{ note.title }}</h2>
   <mat-card style="height: 70vh; width: 80vw">
     <mat-dialog-content>
-      <pdf-viewer [src]="baseURL+note.link" style="width: auto; height: auto"></pdf-viewer>
+      <pdf-viewer [src]="view(note.link)" style="width: auto; height: auto"></pdf-viewer>
     </mat-dialog-content>
   </mat-card>
   <mat-dialog-actions>

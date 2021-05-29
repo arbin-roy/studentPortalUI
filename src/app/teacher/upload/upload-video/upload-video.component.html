@@ -39,7 +39,7 @@
             <mat-select formControlName="subject" required>
               <mat-option
                 *ngFor="let subject of subjects"
-                [value]="subject.code">
+                [value]="subject.subjectCode">
                 {{subject.name}}
               </mat-option>
             </mat-select>

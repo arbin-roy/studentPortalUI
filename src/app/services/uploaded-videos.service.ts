@@ -25,4 +25,10 @@ export class UploadedVideosService {
       headers: headerConfig
     });
   }
+
+  getPdf(urlstring){
+    this.http.get(urlstring).subscribe(res=>{
+      console.log(res)
+    })
+  }
 }

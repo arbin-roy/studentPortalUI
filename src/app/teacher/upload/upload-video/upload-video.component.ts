@@ -21,9 +21,9 @@ export class UploadVideoComponent implements OnInit, OnDestroy {
     desc: ['', [Validators.maxLength(100)]]
   });
   subjects = [
-    {code: 'BCAN-100', name: 'Cyber Security'},
-    {code: 'BCAN-200', name: 'Digital Marketing'},
-    {code: 'BCAN-300', name: 'Values & Ethic\'s'}
+    {subjectCode: 'BCAN-100', name: 'Cyber Security'},
+    {subjectCode: 'BCAN-200', name: 'Digital Marketing'},
+    {subjectCode: 'BCAN-300', name: 'Values & Ethic\'s'}
   ];
   semesters = [1, 2, 3, 4, 5, 6];
   fileToUpload: File = null;

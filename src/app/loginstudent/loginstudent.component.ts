@@ -29,7 +29,7 @@ export class LoginstudentComponent implements OnInit {
   onLogin() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value.entity, this.loginForm.value).subscribe(result => {
+      this.authService.login(this.loginForm.value.entity.toLowerCase(), this.loginForm.value).subscribe(result => {
         console.log(result);
         const data = {
           form: this.loginForm.value,
@@ -43,6 +43,7 @@ export class LoginstudentComponent implements OnInit {
         }
       },
         error => {
+          console.log(error)
           alert('Give correct credentials');
         },
         () => {}
