@@ -15,7 +15,7 @@
       <button mat-button (click)="view(note)">
         <mat-icon> visibility </mat-icon>
       </button>
-      <button mat-button>
+      <button mat-button (click)="download(note.title)">
         <mat-icon> file_download </mat-icon>
       </button>
       <button mat-button>

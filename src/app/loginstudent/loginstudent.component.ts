@@ -22,15 +22,13 @@ export class LoginstudentComponent implements OnInit {
               private authService: AuthserviceService,
               public router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loginForm;
   }
 
-  onLogin() {
+  onLogin(): void {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       this.authService.login(this.loginForm.value.entity.toLowerCase(), this.loginForm.value).subscribe(result => {
-        console.log(result);
         const data = {
           form: this.loginForm.value,
           data: result.data,

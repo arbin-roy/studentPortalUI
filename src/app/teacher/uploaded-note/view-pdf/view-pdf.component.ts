@@ -17,12 +17,4 @@ export class ViewPdfComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  view(note): void {
-    this.uploadedVideosService.viewPDF(note).subscribe(res => {
-      console.log(res);
-    }, error => {
-      console.log(error);
-    });
-  }
-
 }

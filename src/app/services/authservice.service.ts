@@ -17,8 +17,7 @@ export class AuthserviceService {
 
   constructor(private http: HttpClient, public jwtHelperService: JwtHelperService) { }
 
-  // tslint:disable-next-line:typedef
-  savedata(data: any){
+  savedata(data: any): void {
     if (data){
       this.isloggedin.emit(data);
       this.receivedToken = data.token;
@@ -29,12 +28,10 @@ export class AuthserviceService {
   }
 
   login(path, data): Observable<any>{
-    console.log('response coming from server');
     return this.http.post(`${baseurl}${path}/login`, data);
   }
 
-  // tslint:disable-next-line:typedef
-  public isAuthenticated() {
+  public isAuthenticated(): boolean {
     const token = sessionStorage.getItem('_token');
     return !this.jwtHelperService.isTokenExpired(token);
     // return !(!this.jwtHelperService.isTokenExpired(token) && token !== this.receivedToken);

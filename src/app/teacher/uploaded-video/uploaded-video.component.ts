@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {UploadedVideosService} from '../../services/uploaded-videos.service';
+import {Component, OnInit} from '@angular/core';
+import {TeacherUploadService} from '../../services/teacher-upload.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {VideoComponent} from '../../video/video.component';
 import {MatDialog} from '@angular/material/dialog';
+import { DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-uploaded-video',
@@ -12,13 +13,13 @@ import {MatDialog} from '@angular/material/dialog';
 export class UploadedVideoComponent implements OnInit {
   videos = [];
 
-  constructor(private uploadedVideosService: UploadedVideosService,
+  constructor(private teacherUploadService: TeacherUploadService,
               private snackBar: MatSnackBar,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.uploadedVideosService.getVideos().subscribe(res => {
-      console.log(res);
+    this.teacherUploadService.getVideos().subscribe(res => {
       this.videos = res.data;
     }, error => {
       console.log(error);
@@ -33,7 +34,17 @@ export class UploadedVideoComponent implements OnInit {
   }
 
   openDialog(video: any): void {
-    this.dialog.open(VideoComponent, { disableClose: true, data: video });
+    this.teacherUploadService.downloadVideo(video.title).subscribe(res => {
+      const streamLink = window.URL.createObjectURL(this.returnBlob(res));
+      video.link = this.sanitizer.bypassSecurityTrustResourceUrl(streamLink);
+      this.dialog.open(VideoComponent, { disableClose: true, data: video });
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  returnBlob(res): Blob {
+    return new Blob([res], {type: res.type});
   }
 
 }

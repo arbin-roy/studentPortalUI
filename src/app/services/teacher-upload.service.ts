@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders, HttpParams} from '@angular/common/http';
 import { baseurl } from '../../environments/environment';
 import {Observable} from 'rxjs';
 
@@ -12,7 +12,7 @@ export class TeacherUploadService {
 
   uploadVideo(file, values): Observable<HttpEvent<object>> {
     const body = new FormData();
-    body.append('video', file);
+    body.append('video', file, values.title + '.mp4');
     body.append('title', values.title);
     body.append('subjectCode', values.subject);
     body.append('sem', values.semester);
@@ -28,7 +28,7 @@ export class TeacherUploadService {
 
   uploadNote(file, values): Observable<HttpEvent<object>> {
     const body = new FormData();
-    body.append('note', file);
+    body.append('note', file, values.name + '.pdf');
     body.append('title', values.name);
     body.append('subjectCode', values.subject);
     body.append('sem', values.semester);
@@ -42,11 +42,41 @@ export class TeacherUploadService {
     });
   }
 
-  viewPDF(pdfLink) {
+  getVideos(): Observable<any> {
     const headerConfig = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*');
-    return this.http.get(`${baseurl}${pdfLink}`, {
+      .set('Authorization', sessionStorage.getItem('_token'));
+    return this.http.get(`${baseurl}teacher/uploadedVideos`, {
       headers: headerConfig
     });
+  }
+
+  getNotes(): Observable<any> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', sessionStorage.getItem('_token'));
+    return this.http.get(`${baseurl}teacher/uploadedNotes`, {
+      headers: headerConfig
+    });
+  }
+
+  downloadVideo(title: string): Observable<Blob> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', sessionStorage.getItem('_token'));
+    const param = new HttpParams().set('title', title + '.mp4');
+    const options = {
+      params: param,
+      headers: headerConfig
+    };
+    return this.http.get(`${baseurl}teacher/downloadVideo`, {...options, responseType: 'blob'});
+  }
+
+  downloadPDF(name: string): Observable<Blob> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', sessionStorage.getItem('_token'));
+    const param = new HttpParams().set('name', name + '.pdf');
+    const options = {
+      params: param,
+      headers: headerConfig
+    };
+    return this.http.get(`${baseurl}teacher/downloadNote`, {...options, responseType: 'blob'});
   }
 }
