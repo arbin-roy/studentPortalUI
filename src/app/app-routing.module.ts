@@ -8,13 +8,28 @@ import { UploadComponent} from './teacher/upload/upload.component';
 import { UploadedVideoComponent } from './teacher/uploaded-video/uploaded-video.component';
 import { UploadedNoteComponent } from './teacher/uploaded-note/uploaded-note.component';
 import { UploadGuardService } from './services/upload-guard.service';
+import { NotesComponent } from './student/notes/notes.component';
+import { GivePermissionComponent } from './admin/give-permission/give-permission.component';
+import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component';
+import { UpdateStudentComponent } from './admin/update-student/update-student.component';
+import { RecordKeepingComponent } from './teacher/record-keeping/record-keeping.component';
+import { EventsComponent } from './student/events/events.component';
+import { ExaminationsComponent } from './student/examinations/examinations.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'lecturevideos', component: LectureVideoComponent},
+  {path: 'lecturevideos', component: LectureVideoComponent },
   {path: 'syllabus', component: SyllabusComponent},
   {path: 'notice', component: NoticesComponent},
   {path: 'login', component: LoginstudentComponent},
+  {path:'lecturenotes', component: NotesComponent },
+  {path:'givepermission', component: GivePermissionComponent },
+  {path:'events', component:EventsComponent},
+  {path:'examination', component: ExaminationsComponent },
+  {path:'givepermission', component: GivePermissionComponent },
+  {path:'updatestudent', component: UpdateStudentComponent },
+  {path:'updateteacher', component: UpdateTeacherComponent },
+  {path:'updaterecord', component: RecordKeepingComponent },
   {path: 'upload', component: UploadComponent, canActivate: [UploadGuardService], data: {
       expectedRole: 'Teacher'
     }
@@ -41,5 +56,13 @@ export const routingPaths = [
   NoticesComponent,
   LoginstudentComponent,
   UploadComponent,
-  UploadedVideoComponent
+  UploadedVideoComponent,
+  UploadedNoteComponent,
+  NotesComponent,
+  GivePermissionComponent,
+  UpdateStudentComponent,
+  UpdateTeacherComponent,
+  RecordKeepingComponent,
+  EventsComponent,
+  ExaminationsComponent
 ];

@@ -1,6 +1,6 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab *ngFor="let subjectCode of video" [label]="subjectCode.subjectCode" >
-    <div>
+    <div class="container">
       <!-- <div *ngIf="subject.videos.length == 0">
         <p style="text-align: center"> No videos available for this subject</p>
       </div> -->
@@ -19,7 +19,7 @@
           <button mat-button (click)="openDialog(video)">
             <mat-icon> visibility </mat-icon> WATCH
           </button>
-          <button mat-button>
+          <button mat-button (click)="download(video.title)">
             <mat-icon> file_download </mat-icon> DOWNLOAD
           </button>
         </mat-card-actions>

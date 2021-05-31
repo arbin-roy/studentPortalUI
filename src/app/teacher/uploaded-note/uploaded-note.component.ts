@@ -40,6 +40,7 @@ export class UploadedNoteComponent implements OnInit {
 
   view(note): void {
     this.teacherUploadService.downloadPDF(note.title).subscribe(res => {
+      console.log(res)
       note.link = window.URL.createObjectURL(this.returnBlob(res));
       this.dialog.open(ViewPdfComponent, {data: note, disableClose: true});
     }, error => {

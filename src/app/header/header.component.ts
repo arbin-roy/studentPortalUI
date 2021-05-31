@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     {
      this.auth.isloggedin.subscribe(res => {
           this.logged = true;
-          this.username = res.data.name;
+          this.username = res.data.name.split(" ")[0];
      });
   }
 
@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
      this.router.navigate(['/login' ]);
      this.logged = false;
      sessionStorage.clear();
+     this.navService.closeNav()
   }
 
 }

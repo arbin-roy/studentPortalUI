@@ -19,11 +19,12 @@ export class AuthserviceService {
 
   savedata(data: any): void {
     if (data){
+      console.log(data.data.name.split(" ")[0])
       this.isloggedin.emit(data);
       this.receivedToken = data.token;
       sessionStorage.setItem('_token', data.token);
       sessionStorage.setItem('_role', data.form.entity);
-      sessionStorage.setItem('_userName', data.data.name);
+      sessionStorage.setItem('_userName', data.data.name.split(" ")[0]);
     }
   }
 

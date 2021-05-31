@@ -38,6 +38,7 @@ export class LoginstudentComponent implements OnInit {
         switch (this.loginForm.value.entity) {
           case 'Teacher': this.router.navigate(['/upload']); break;
           case 'Student': this.router.navigate(['/lecturevideos']); break;
+          case 'Admin': this.router.navigate(['/givepermission']); break;
         }
       },
         error => {

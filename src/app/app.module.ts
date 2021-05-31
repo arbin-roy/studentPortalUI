@@ -21,6 +21,14 @@ import { NoNotesDialogComponent } from './teacher/uploaded-note/no-notes-dialog/
 import { UploadNoteComponent } from './teacher/upload/upload-note/upload-note.component';
 import { PdfViewerModule} from 'ng2-pdf-viewer';
 import { ViewPdfComponent } from './teacher/uploaded-note/view-pdf/view-pdf.component';
+import { NotesComponent } from './student/notes/notes.component';
+import { GivePermissionComponent } from './admin/give-permission/give-permission.component'
+import { UpdateStudentComponent } from './admin/update-student/update-student.component'
+import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component'
+import { EventsComponent } from './student/events/events.component'
+import { ExaminationsComponent } from './student/examinations/examinations.component'
+import { RecordKeepingComponent } from './teacher/record-keeping/record-keeping.component'
+
 
 @NgModule({
   declarations: [
@@ -34,7 +42,14 @@ import { ViewPdfComponent } from './teacher/uploaded-note/view-pdf/view-pdf.comp
     UploadedNoteComponent,
     NoNotesDialogComponent,
     UploadNoteComponent,
-    ViewPdfComponent
+    ViewPdfComponent,
+    NotesComponent,
+    GivePermissionComponent,
+    UpdateStudentComponent,
+    UpdateTeacherComponent,
+    EventsComponent,
+    ExaminationsComponent,
+    RecordKeepingComponent
   ],
   imports: [
     BrowserModule,

@@ -5,10 +5,17 @@
   margin-bottom: 50px;
   margin-top: 15px;
   float: left;
-  margin-left: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
   border-radius: 10px
 }
 .example-header-image {
   background-image: url('https://www.pngkit.com/png/full/267-2678423_bacteria-video-thumbnail-default.png');
   background-size: cover;
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }

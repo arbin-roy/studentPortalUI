@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .example-card {
+    min-width: 100px;
+    max-width: 280px;
+    min-height: 175px;
+    margin-bottom: 50px;
+    margin-top: 15px;
+    float: left;
+    margin-left: 40px;
+    border-radius: 10px
+  }
+  
