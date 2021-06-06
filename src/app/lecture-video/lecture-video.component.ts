@@ -5,6 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {LectureVideosService} from '../services/lecture-videos.service'
 import { DomSanitizer} from '@angular/platform-browser';
 import * as fileSaver from 'file-saver';
+import {AuthserviceService} from '../services/authservice.service';
 
 @Component({
   selector: 'app-lecture-video',
@@ -17,7 +18,8 @@ export class LectureVideoComponent implements OnInit {
   constructor(private dialog: MatDialog,
               private lecturevideos: LectureVideosService,
               private snackBar: MatSnackBar,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer,
+              private authService: AuthserviceService) { }
 
   ngOnInit(): void {
     this.lecturevideos.getVideos().subscribe(res => {
@@ -29,21 +31,25 @@ export class LectureVideoComponent implements OnInit {
         case 404:
           this.snackBar.open(error.error.message, 'Close'); break;
         case 401:
-          this.snackBar.open(error.error, 'Close'); break;
+          this.snackBar.open(error.error, 'Close');
+          this.authService.logout();
+          break;
         case 0: this.snackBar.open('Server connection establishment failed', 'Close'); break;
       }
     });
   }
 
   openDialog(video: any): void {
-    this.lecturevideos.downloadVideo(video.title).subscribe(res => {
-      console.log(res)
-      const streamLink = window.URL.createObjectURL(this.returnBlob(res));
-      video.link = this.sanitizer.bypassSecurityTrustResourceUrl(streamLink);
-      this.dialog.open(VideoComponent, { disableClose: true, data: video });
-    }, error => {
-      console.log(error);
-    });
+    // this.lecturevideos.downloadVideo(video.title).subscribe(res => {
+    //   console.log(res);
+    //   const streamLink = window.URL.createObjectURL(this.returnBlob(res));
+    //   video.link = this.sanitizer.bypassSecurityTrustResourceUrl(streamLink);
+    //   this.dialog.open(VideoComponent, { disableClose: true, data: video });
+    // }, error => {
+    //   console.log(error);
+    // });
+    video.link = `http://localhost:5678/student/stream/${video.title}`;
+    this.dialog.open(VideoComponent, { disableClose: true, data: video });
   }
 
   returnBlob(res): Blob {

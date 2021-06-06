@@ -34,13 +34,15 @@ export class UploadedVideoComponent implements OnInit {
   }
 
   openDialog(video: any): void {
-    this.teacherUploadService.downloadVideo(video.title).subscribe(res => {
-      const streamLink = window.URL.createObjectURL(this.returnBlob(res));
-      video.link = this.sanitizer.bypassSecurityTrustResourceUrl(streamLink);
-      this.dialog.open(VideoComponent, { disableClose: true, data: video });
-    }, error => {
-      console.log(error);
-    });
+    // this.teacherUploadService.downloadVideo(video.title).subscribe(res => {
+    //   const streamLink = window.URL.createObjectURL(this.returnBlob(res));
+    //   video.link = this.sanitizer.bypassSecurityTrustResourceUrl(streamLink);
+    //   this.dialog.open(VideoComponent, { disableClose: true, data: video });
+    // }, error => {
+    //   console.log(error);
+    // });
+    video.link = `http://localhost:5678/teacher/stream/${video.title}`;
+    this.dialog.open(VideoComponent, { disableClose: true, data: video });
   }
 
   returnBlob(res): Blob {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -12,5 +12,4 @@ export class VideoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavService} from '../services/nav.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
 import {AuthserviceService} from '../services/authservice.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -26,13 +24,11 @@ export class HeaderComponent implements OnInit {
   public username: string;
 
   constructor(public navService: NavService,
-              private breakpointObserver: BreakpointObserver,
-              public auth: AuthserviceService,
-              public router: Router)
+              public auth: AuthserviceService)
     {
      this.auth.isloggedin.subscribe(res => {
           this.logged = true;
-          this.username = res.data.name.split(" ")[0];
+          this.username = res.data.name.split(' ')[0];
      });
   }
 
@@ -43,14 +39,14 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  rotate() {
+  rotate(): void {
     this.state = (this.state === 'collapsed' ? 'expanded' : 'collapsed');
   }
-  onLogout(){
-     this.router.navigate(['/login' ]);
+
+  onLogout(): void{
      this.logged = false;
-     sessionStorage.clear();
-     this.navService.closeNav()
+     this.auth.logout();
+     this.navService.closeNav();
   }
 
 }

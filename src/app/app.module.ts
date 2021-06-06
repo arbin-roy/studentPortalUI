@@ -12,7 +12,7 @@ import { SyllabusComponent } from './student/syllabus/syllabus.component';
 import { VideoComponent } from './video/video.component';
 import { LoginstudentComponent } from './loginstudent/loginstudent.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthserviceService} from './services/authservice.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import {UploadVideoComponent} from './teacher/upload/upload-video/upload-video.component';
@@ -22,12 +22,14 @@ import { UploadNoteComponent } from './teacher/upload/upload-note/upload-note.co
 import { PdfViewerModule} from 'ng2-pdf-viewer';
 import { ViewPdfComponent } from './teacher/uploaded-note/view-pdf/view-pdf.component';
 import { NotesComponent } from './student/notes/notes.component';
-import { GivePermissionComponent } from './admin/give-permission/give-permission.component'
-import { UpdateStudentComponent } from './admin/update-student/update-student.component'
-import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component'
-import { EventsComponent } from './student/events/events.component'
-import { ExaminationsComponent } from './student/examinations/examinations.component'
-import { RecordKeepingComponent } from './teacher/record-keeping/record-keeping.component'
+import { GivePermissionComponent } from './admin/give-permission/give-permission.component';
+import { UpdateStudentComponent } from './admin/update-student/update-student.component';
+import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component';
+import { EventsComponent } from './student/events/events.component';
+import { ExaminationsComponent } from './student/examinations/examinations.component';
+import { RecordKeepingComponent } from './teacher/record-keeping/record-keeping.component';
+
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 @NgModule({
