@@ -33,7 +33,7 @@ export class UpdateTeacherComponent implements OnInit {
     teacherId: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     subnum: ['', [Validators.required]],
-    subjects:[[]]
+    subjects:([])
   }); */
 
   addteachers = new FormGroup({
@@ -49,10 +49,6 @@ export class UpdateTeacherComponent implements OnInit {
 
   
   ngOnInit(): void {
-    /* addteachers = new FormGroup({
-      name: new FormControl(''),
-      skills: new FormArray([])
-    }); */
   }
   addteacher(){
     console.log(this.addteachers.value)
