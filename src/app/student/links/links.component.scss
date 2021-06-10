@@ -1,0 +1,60 @@
+table{
+    width: 80%;
+}
+
+.mat-column-link {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 35% !important;
+    width: 35% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-left: 4px;
+    margin: 4px;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  .mat-column-desc {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-left: 4px;
+    margin: 4px;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  .mat-column-Sr.No {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-left: 2px;
+    margin: 4px;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  td.mat-cell, th.mat-header-cell {
+    text-align: center;
+  }

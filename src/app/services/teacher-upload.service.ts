@@ -42,6 +42,14 @@ export class TeacherUploadService {
     });
   }
 
+  uploadLink(values): Observable<any> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', sessionStorage.getItem('_token'));
+    return this.http.post(`${baseurl}teacher/uploadLink`, values, {
+      headers: headerConfig
+    });
+  }
+
   getVideos(): Observable<any> {
     const headerConfig = new HttpHeaders()
       .set('Authorization', sessionStorage.getItem('_token'));
@@ -54,6 +62,14 @@ export class TeacherUploadService {
     const headerConfig = new HttpHeaders()
       .set('Authorization', sessionStorage.getItem('_token'));
     return this.http.get(`${baseurl}teacher/uploadedNotes`, {
+      headers: headerConfig
+    });
+  }
+
+  getLinks(): Observable<any> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', sessionStorage.getItem('_token'));
+    return this.http.get(`${baseurl}teacher/uploadedlinks`, {
       headers: headerConfig
     });
   }

@@ -1,1 +1,64 @@
-<h1 style="text-align:center">Update teacher will be available soon</h1>
+<mat-card fxLayoutAlign="centre centre">
+  <mat-card-content>
+    <div class="header">
+      <P>Add Teacher</P>
+    </div>
+    <form (ngSubmit)="addteacher()" name="addteachers" [formGroup]="addteachers">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput placeholder="Enter teacher name" required />
+        <mat-error *ngIf="!addteachers.controls['name'].valid">
+          give valid name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>TeacherId</mat-label>
+        <input formControlName="teacherId" matInput placeholder="Enter teacherId" required />
+        <mat-error *ngIf="!addteachers.controls['teacherId'].valid">
+          give valid TeacherID
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="Enter password" required />
+        <mat-error *ngIf="!addteachers.controls['password'].valid">
+          give valid TeacherID
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="dept" [(value)]="selected">
+            <mat-option value="">Choose Department</mat-option>
+            <mat-option value="BCA">BCA</mat-option>
+            <mat-option value="BBA">BBA</mat-option>
+            <mat-option value="BHM">BHM</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>SubNo</mat-label>
+          <input formControlName="subnum" matInput placeholder="no. of subs" [(ngModel)]="numbers" required />
+          <mat-error *ngIf="!addteachers.controls['subnum'].valid">
+            enter the number of subjects
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button type="button" (click)="add()" [disabled]="!show">Add</button>
+        <button mat-raised-button type="button" (click)="clear()" [disabled]="show">Clear</button>
+      </div>
+      <ng-container formArrayName="subjects">
+        <div *ngFor="let g of subjects.controls; let i=index">
+          <mat-form-field appearance="outline">
+              <mat-label> Select Subject </mat-label>
+              <mat-select [formControlName]="i">
+                <mat-option *ngFor="let subject of Subjects" [value]="subject">
+                  {{subject.name}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field> 
+        </div>
+      </ng-container>
+      <button mat-flat-button color="primary" type="submit">submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>

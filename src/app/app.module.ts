@@ -17,6 +17,8 @@ import { AuthserviceService} from './services/authservice.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import {UploadVideoComponent} from './teacher/upload/upload-video/upload-video.component';
 import { UploadedNoteComponent } from './teacher/uploaded-note/uploaded-note.component';
+import { UploadedLinkComponent } from './teacher/uploaded-link/uploaded-link.component';
+import { UploadLinkComponent } from './teacher/upload/upload-link/upload-link.component';
 import { NoNotesDialogComponent } from './teacher/uploaded-note/no-notes-dialog/no-notes-dialog.component';
 import { UploadNoteComponent } from './teacher/upload/upload-note/upload-note.component';
 import { PdfViewerModule} from 'ng2-pdf-viewer';
@@ -26,6 +28,7 @@ import { GivePermissionComponent } from './admin/give-permission/give-permission
 import { UpdateStudentComponent } from './admin/update-student/update-student.component';
 import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component';
 import { EventsComponent } from './student/events/events.component';
+import { LinksComponent } from './student/links/links.component';
 import { ExaminationsComponent } from './student/examinations/examinations.component';
 import { RecordKeepingComponent } from './teacher/record-keeping/record-keeping.component';
 
@@ -42,14 +45,17 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     LoginstudentComponent,
     UploadVideoComponent,
     UploadedNoteComponent,
+    UploadedLinkComponent ,
     NoNotesDialogComponent,
     UploadNoteComponent,
+    UploadLinkComponent,
     ViewPdfComponent,
     NotesComponent,
     GivePermissionComponent,
     UpdateStudentComponent,
     UpdateTeacherComponent,
     EventsComponent,
+    LinksComponent,
     ExaminationsComponent,
     RecordKeepingComponent
   ],

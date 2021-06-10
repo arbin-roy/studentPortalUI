@@ -31,9 +31,10 @@ export class AppComponent implements AfterViewInit, OnInit{
           this.navItems = [
             {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
             {name: 'Notes & PDF\'s & Ebooks', route: '/lecturenotes', icon: 'notes'},
+            {name: ' Important Links', route:'/links', icon:'launch'},
             {name: 'Syllabus', route: '/syllabus', icon: 'book'},
             {name: 'Upcoming Examinations', route: 'examination', icon: 'edit'},
-            {name: 'Upcoming Activities', route: 'events', icon: 'local_activity'},
+            {name: 'Upcoming Activities', route: 'events', icon: 'event'},
           ];
           break;
         case 'Teacher':
@@ -41,7 +42,8 @@ export class AppComponent implements AfterViewInit, OnInit{
             {name: 'Upload', route: '/upload', icon: 'upload'},
             {name: 'Uploaded Videos', route: '/uploadedvideos', icon: 'upload'},
             {name: 'Uploaded Notes', route: '/uploadednotes', icon: 'note'},
-            {name: 'Record Keeping', route:'/updaterecord', icon:'note'}
+            {name: 'Record Keeping', route:'/updaterecord', icon:'note'},
+            {name: 'Uploaded Links', route:'./uploadedlinks', icon:'note'}
           ];
           break;
         case 'Admin':
