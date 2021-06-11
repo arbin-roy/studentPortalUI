@@ -9,13 +9,13 @@ import { FormGroup, FormBuilder, Validators, FormsModule, FormArray, FormControl
 })
 export class UpdateTeacherComponent implements OnInit {
 
-  constructor(public lecture:LectureVideosService, public fb: FormBuilder) { }
-    
-  selected='';
-  selects=[];
-  numbers=1;
-  list=[];
-  show=true;
+  constructor(public lecture: LectureVideosService, public fb: FormBuilder) { }
+
+  selected = '';
+  selects = [];
+  numbers = 1;
+  list = [];
+  show = true;
 
   Subjects = [
     {subjectCode: 'BCAN-100', name: 'Cyber Security'},
@@ -26,7 +26,6 @@ export class UpdateTeacherComponent implements OnInit {
     {subjectCode: 'BCAN-600', name: 'Python'}
   ];
 
-  
   /* addteachers: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     dept: ['', [Validators.required]],
@@ -36,7 +35,7 @@ export class UpdateTeacherComponent implements OnInit {
     subjects:([])
   }); */
 
-  addteachers = new FormGroup({
+  addTeachers = new FormGroup({
     name: new FormControl(''),
     teacherId: new FormControl(''),
     dept: new FormControl(''),
@@ -45,25 +44,26 @@ export class UpdateTeacherComponent implements OnInit {
     subjects: new FormArray([])
   });
 
-  subjects = this.addteachers.get("subjects") as FormArray;
+  subjects = this.addTeachers.get('subjects') as FormArray;
 
-  
   ngOnInit(): void {
   }
-  addteacher(){
-    console.log(this.addteachers.value)
+
+  addTeacher(): void{
+    console.log(this.addTeachers.value);
   }
 
-  add(){
-    var i;
-    this.show=false
-    for(i=1;i<=this.numbers;i++){
-      var control = new FormControl('', Validators.required);
+  add(): void{
+    let i;
+    this.show = false;
+    for (i = 1; i <= this.numbers ; i++){
+      const control = new FormControl('', Validators.required);
       this.subjects.push(control);
     }
   }
-  clear(){
-    this.subjects.clear()
-    this.show=true
+
+  clear(): void{
+    this.subjects.clear();
+    this.show = true;
   }
 }

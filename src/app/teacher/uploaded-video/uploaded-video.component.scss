@@ -1,4 +1,4 @@
-.example-card {
+.card {
   min-width: 100px;
   max-width: 280px;
   min-height: 175px;
@@ -8,12 +8,48 @@
   border-radius: 10px;
   padding: 10px;
 }
-.example-header-image {
-  background-image: url('https://www.pngkit.com/png/full/267-2678423_bacteria-video-thumbnail-default.png');
-  background-size: cover;
+
+.cardActions{
+  button {
+    font-size: medium;
+  }
 }
+
+.cardTitle{
+  font-size: large;
+}
+
+.header-image {
+  width: 120px;
+  height: 120px;
+  margin-left: 60px;
+}
+
 .container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 230px;
+    height: 220px;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-bottom: 30px;
+  }
+  .header-image {
+    width: inherit;
+    height: 90px;
+    margin-left: 1px;
+  }
+  .cardActions{
+    button {
+      font-size: small;
+    }
+  }
+  .cardTitle{
+    font-size: medium;
+  }
 }

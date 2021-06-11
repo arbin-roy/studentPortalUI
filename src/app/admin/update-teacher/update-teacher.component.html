@@ -3,25 +3,25 @@
     <div class="header">
       <P>Add Teacher</P>
     </div>
-    <form (ngSubmit)="addteacher()" name="addteachers" [formGroup]="addteachers">
+    <form (ngSubmit)="addTeacher()" name="addteachers" [formGroup]="addTeachers">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Name</mat-label>
         <input formControlName="name" matInput placeholder="Enter teacher name" required />
-        <mat-error *ngIf="!addteachers.controls['name'].valid">
+        <mat-error *ngIf="!addTeachers.controls['name'].valid">
           give valid name
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>TeacherId</mat-label>
         <input formControlName="teacherId" matInput placeholder="Enter teacherId" required />
-        <mat-error *ngIf="!addteachers.controls['teacherId'].valid">
+        <mat-error *ngIf="!addTeachers.controls['teacherId'].valid">
           give valid TeacherID
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Password</mat-label>
         <input formControlName="password" matInput placeholder="Enter password" required />
-        <mat-error *ngIf="!addteachers.controls['password'].valid">
+        <mat-error *ngIf="!addTeachers.controls['password'].valid">
           give valid TeacherID
         </mat-error>
       </mat-form-field>
@@ -39,7 +39,7 @@
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>SubNo</mat-label>
           <input formControlName="subnum" matInput placeholder="no. of subs" [(ngModel)]="numbers" required />
-          <mat-error *ngIf="!addteachers.controls['subnum'].valid">
+          <mat-error *ngIf="!addTeachers.controls['subnum'].valid">
             enter the number of subjects
           </mat-error>
         </mat-form-field>
@@ -55,7 +55,7 @@
                   {{subject.name}}
                 </mat-option>
               </mat-select>
-          </mat-form-field> 
+          </mat-form-field>
         </div>
       </ng-container>
       <button mat-flat-button color="primary" type="submit">submit</button>

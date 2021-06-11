@@ -2,14 +2,17 @@
   <button *ngIf ="logged" mat-icon-button >
     <mat-icon  (click)="navService.touggleNav()">menu</mat-icon>
   </button>
-  <span style="margin-left: 10px">{{ title }}</span>
-  <div></div>
-  <a *ngIf="logged" mat-button style="margin-left: 10px" routerLink="/notice"> Notices </a>
+  <img
+    src="../../assets/bcrecapc-logoicon.png"
+    alt="Just like that"
+    class="header-image">
+  <span class="headerText">{{ title }}</span>
+  <a *ngIf="logged" mat-button routerLink="/notice"> Notices </a>
   <span class="example-spacer"></span>
-  <a *ngIf="!logged" mat-button style="margin-left: 10px" routerLink="/notice"> Notices </a>
+  <a *ngIf="!logged" mat-button routerLink="/notice"> Notices </a>
   <div *ngIf="logged">
-  <button mat-raised-button [matMenuTriggerFor]="menu" class="studentButton" (click)="rotate()"
-    (menuClosed)="state = 'collapsed'">
+  <button mat-raised-button [matMenuTriggerFor]="menu" class="headerMenuButton" (click)="rotate()"
+          (menuClosed)="state = 'collapsed'">
     <span style="margin-left: 5px"> {{username}} </span>
     <mat-icon [@indicatorRotate]="state">
       expand_more

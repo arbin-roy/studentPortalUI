@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card class="card" *ngFor="let item of uploadItems" (click)="openDialog(item.title)">
+  <mat-card class="card" *ngFor="let item of uploadItems; i as index" (click)="openDialog(item.title)">
     <mat-card-header>
       <mat-card-title> {{ item.title }} </mat-card-title>
     </mat-card-header>

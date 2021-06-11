@@ -1,5 +1,25 @@
 .videoBoundary {
-  min-width: 100px;
-  max-width: 450px;
+  width: 700px;
   height: 300px;
+}
+
+@media screen and (max-width: 576px) {
+  .videoBoundary {
+    width: 250px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 576px){
+  .videoBoundary {
+    width: 400px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px){
+  .videoBoundary {
+    width: 580px;
+    height: 250px;
+  }
 }

@@ -3,10 +3,13 @@
   <video
     class="videoBoundary"
     controls
+    controlsList="nodownload noremoteplayback"
+    disablePictureInPicture
     autoplay
     muted="muted"
-    style="background-color: black">
-    <source [src]="video.link" type="video/mp4">
+    [src]="video.link"
+    type="video/mp4"
+    #videoRef>
     Your browser does not support the video tag.
   </video>
   <p> {{ video.desc ? video.desc : 'No description provided'}} </p>

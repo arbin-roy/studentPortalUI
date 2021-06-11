@@ -32,12 +32,11 @@ export class UploadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
-  openDialog(item: string) {
+  openDialog(item: string): void {
     switch (item) {
       case 'Video': this.dialog.open(UploadVideoComponent, {disableClose: true, data: item}); break;
       case 'PDF or Notes': this.dialog.open(UploadNoteComponent, {disableClose: true, data: item}); break;
-      case 'Important Link\'s': this.dialog.open(UploadLinkComponent, {disableClose: true, data: item}); break; 
+      case 'Important Link\'s': this.dialog.open(UploadLinkComponent, {disableClose: true, data: item}); break;
     }
   }
 
