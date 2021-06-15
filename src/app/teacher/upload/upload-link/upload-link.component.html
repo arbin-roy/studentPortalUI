@@ -1,61 +1,60 @@
 <div style="width: auto;">
-    <h2 mat-dialog-title> {{ item }}</h2>
-    <form (ngSubmit)="upload()" name="linkForm" [formGroup]="linkForm">
-      <mat-dialog-content>
-        <mat-form-field appearance="outline" style="width: 300px">
-          <mat-label> Link </mat-label>
-          <input
-            matInput
-            placeholder="Enter the video/pdf link"
-            formControlName="link"
-            required>
-          <mat-error *ngIf="!linkForm.controls['link'].valid"> Please give valid details </mat-error>
-          <mat-hint> Video Title should be meaning full</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="margin-left: 5px">
-          <mat-label> Description </mat-label>
-          <input
-            matInput
-            placeholder="Enter the video description"
-            formControlName="desc"
-            required>
-          <mat-error *ngIf="!linkForm.controls['desc'].valid"> Please give valid details </mat-error>
-          <mat-hint> Description will be help full </mat-hint>
-        </mat-form-field>
-        <table><tr>
-          <td>
-            <mat-form-field appearance="outline">
-              <mat-label> Select Subject </mat-label>
-              <mat-select formControlName="subject" required>
-                <mat-option
-                  *ngFor="let subject of subjects"
-                  [value]="subject.subjectCode">
-                  {{subject.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="!linkForm.controls['subject'].valid"> Please choose subject </mat-error>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field style="width: 125px" appearance="outline">
-              <mat-label> Semester </mat-label>
-              <mat-select formControlName="semester" required>
-                <mat-option
-                  *ngFor="let semester of semesters"
-                  [value]="semester">
-                  {{ semester }}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="!linkForm.controls['semester'].valid"> Select semester </mat-error>
-            </mat-form-field>
-          </td>
-        </tr></table>
-        <mat-divider></mat-divider>
-      </mat-dialog-content>
-      <mat-dialog-actions align="end">
-        <button mat-raised-button type="submit" [disabled]="!linkForm.valid">Submit</button>
-        <button mat-flat-button mat-dialog-close> Cancel </button>
-      </mat-dialog-actions>
-    </form>
-  </div>
-  
+  <h2 mat-dialog-title> {{ item }}</h2>
+  <form (ngSubmit)="upload()" name="linkForm" [formGroup]="linkForm">
+    <mat-dialog-content>
+      <mat-form-field appearance="outline">
+        <mat-label> Link </mat-label>
+        <input
+          matInput
+          placeholder="Enter the video/pdf link"
+          formControlName="link"
+          required>
+        <mat-error *ngIf="!linkForm.controls['link'].valid"> Please give valid details </mat-error>
+        <mat-hint> Video Title should be meaning full</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> Description </mat-label>
+        <input
+          matInput
+          placeholder="Enter the video description"
+          formControlName="desc"
+          required>
+        <mat-error *ngIf="!linkForm.controls['desc'].valid"> Please give valid details </mat-error>
+        <mat-hint> Description will be help full </mat-hint>
+      </mat-form-field>
+      <table><tr>
+        <td>
+          <mat-form-field appearance="outline" class="selectSubject">
+            <mat-label> {{ subjectLabel }} </mat-label>
+            <mat-select formControlName="subject" required>
+              <mat-option
+                *ngFor="let subject of subjects"
+                [value]="subject.subjectCode">
+                {{subject.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="!linkForm.controls['subject'].valid"> Please choose subject </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="outline" class="selectSemester">
+            <mat-label> {{ semLabel }} </mat-label>
+            <mat-select formControlName="semester" required>
+              <mat-option
+                *ngFor="let semester of semesters"
+                [value]="semester">
+                {{ semester }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="!linkForm.controls['semester'].valid"> Select semester </mat-error>
+          </mat-form-field>
+        </td>
+      </tr></table>
+      <mat-divider></mat-divider>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-raised-button type="submit" [disabled]="!linkForm.valid">Submit</button>
+      <button mat-flat-button mat-dialog-close> Cancel </button>
+    </mat-dialog-actions>
+  </form>
+</div>

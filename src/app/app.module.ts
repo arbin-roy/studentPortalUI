@@ -31,6 +31,7 @@ import { EventsComponent } from './student/events/events.component';
 import { LinksComponent } from './student/links/links.component';
 import { ExaminationsComponent } from './student/examinations/examinations.component';
 import { RecordKeepingComponent } from './teacher/record-keeping/record-keeping.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
@@ -67,7 +68,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PdfViewerModule
+    PdfViewerModule,
+    LayoutModule
   ],
   providers: [NavService, AuthserviceService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],

@@ -2,7 +2,7 @@ import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { TeacherUploadService} from '../../../services/teacher-upload.service';
-import { HttpEventType} from '@angular/common/http';
+import {BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {Subscription} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -27,23 +27,33 @@ export class UploadLinkComponent implements OnInit {
   semesters = [1, 2, 3, 4, 5, 6];
   service: Subscription;
 
+  subjectLabel = 'Select Subject';
+  semLabel = 'Select Semester';
+
 
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,
               private uploadLinkService: TeacherUploadService,
               private snackBar: MatSnackBar,
-              private dialogRef: MatDialogRef<UploadLinkComponent>
+              private dialogRef: MatDialogRef<UploadLinkComponent>,
+              private breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
+    this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(state => {
+      if (state.matches) {
+        this.subjectLabel = 'Subject';
+        this.semLabel = 'Sem';
+      }
+    });
   }
 
-  upload(){
+  upload(): void{
     if (this.linkForm.valid){
-      console.log(this.linkForm.value)
+      console.log(this.linkForm.value);
       this.service = this.uploadLinkService.uploadLink(this.linkForm.value).subscribe(result => {
-        console.log(result)
-        if(result.success==true){
+        console.log(result);
+        if (result.success === true){
           this.dialogRef.close();
           this.snackBar.open('link uploaded successfully', 'Close', {
             duration: 3000

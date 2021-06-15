@@ -27,7 +27,7 @@ export class UploadedVideoComponent implements OnInit {
         case 404:
           this.snackBar.open(error.error.message, 'Close'); break;
         case 401:
-          this.snackBar.open(error.error, 'Close'); break;
+          this.snackBar.open('Session Timed Out', 'Close'); break;
         case 0: this.snackBar.open('Server connection establishment failed', 'Close'); break;
       }
     });
@@ -47,6 +47,11 @@ export class UploadedVideoComponent implements OnInit {
 
   returnBlob(res): Blob {
     return new Blob([res], {type: res.type});
+  }
+
+  delete(index): void{
+    console.log(index);
+    this.videos.splice(index, 1);
   }
 
 }

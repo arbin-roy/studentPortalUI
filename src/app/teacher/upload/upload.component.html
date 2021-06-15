@@ -1,14 +1,12 @@
 <div class="container">
   <mat-card class="card" *ngFor="let item of uploadItems; i as index" (click)="openDialog(item.title)">
-    <mat-card-header>
-      <mat-card-title> {{ item.title }} </mat-card-title>
-    </mat-card-header>
+    <mat-card-title class="uploadCardTitle"> {{ item.title }} </mat-card-title>
     <img
       [src]=" item.image "
-      style="width: 150px; height: 150px"
-      alt="Just">
+      alt="Just"
+      class="cardImage">
     <mat-card-content>
-      <p align="center">
+      <p style="margin-top: 10px">
         {{ item.desc }}
       </p>
     </mat-card-content>

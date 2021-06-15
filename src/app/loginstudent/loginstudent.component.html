@@ -1,4 +1,4 @@
-<div>
+<div class="loginContainer">
   <mat-card style="background-color:mintcream">
     <mat-card-content>
       <div class="header">
@@ -42,9 +42,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-
         <div>
-
           <mat-form-field class="full-width" appearance="outline"  *ngIf = "loginForm.value.entity">
             <mat-label>Password</mat-label>
             <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />

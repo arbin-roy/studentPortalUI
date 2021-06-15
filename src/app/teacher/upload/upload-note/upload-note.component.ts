@@ -5,6 +5,7 @@ import {TeacherUploadService} from '../../../services/teacher-upload.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
+import {BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-upload-note',
@@ -30,11 +31,15 @@ export class UploadNoteComponent implements OnInit {
   selectedVideo: string;
   service: Subscription;
 
+  subjectLabel = 'Select Subject';
+  semLabel = 'Select Sem';
+
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,
               private uploadVideoService: TeacherUploadService,
               private snackBar: MatSnackBar,
-              private dialogRef: MatDialogRef<UploadNoteComponent>) { }
+              private dialogRef: MatDialogRef<UploadNoteComponent>,
+              private breakpointObserver: BreakpointObserver) { }
 
   handleFileInput(files): void {
     this.fileToUpload = files.target.files[0];
@@ -72,6 +77,12 @@ export class UploadNoteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(state => {
+      if (state.matches) {
+        this.subjectLabel = 'Subject';
+        this.semLabel = 'Sem';
+      }
+    });
   }
 
 }

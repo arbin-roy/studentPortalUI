@@ -2,7 +2,7 @@
   <h2 mat-dialog-title> {{ item }}</h2>
   <form (ngSubmit)="upload()" name="videoForm" [formGroup]="videoForm">
     <mat-dialog-content>
-      <mat-form-field appearance="outline" style="width: 300px">
+      <mat-form-field appearance="outline" >
         <mat-label> Title </mat-label>
         <input
           matInput
@@ -12,7 +12,7 @@
         <mat-error *ngIf="!videoForm.controls['title'].valid"> Please give valid details </mat-error>
         <mat-hint> Video Title should be meaning full</mat-hint>
       </mat-form-field>
-      <mat-form-field appearance="outline" style="margin-left: 5px">
+      <mat-form-field appearance="outline" >
         <mat-label> Description </mat-label>
         <input
           matInput
@@ -34,8 +34,8 @@
       </button>
       <table><tr>
         <td>
-          <mat-form-field appearance="outline">
-            <mat-label> Select Subject </mat-label>
+          <mat-form-field appearance="outline" class="selectSubject">
+            <mat-label> {{ subjectLabel }} </mat-label>
             <mat-select formControlName="subject" required>
               <mat-option
                 *ngFor="let subject of subjects"
@@ -47,8 +47,8 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field style="width: 125px" appearance="outline">
-            <mat-label> Semester </mat-label>
+          <mat-form-field appearance="outline" class="selectSemester">
+            <mat-label>{{ semLabel }}</mat-label>
             <mat-select formControlName="semester" required>
               <mat-option
                 *ngFor="let semester of semesters"
@@ -60,7 +60,7 @@
           </mat-form-field>
         </td>
       </tr></table>
-      <mat-divider></mat-divider>
+      <mat-divider style="margin-top: 8px"></mat-divider>
       <div *ngIf="fileToUpload" style="margin-top: 10px">
         <strong> Selected Video </strong>
         <p> {{ selectedVideo }}</p>

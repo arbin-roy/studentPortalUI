@@ -50,7 +50,7 @@ export class AppComponent implements AfterViewInit, OnInit{
           this.navItems = [
             {name: 'Update Teacher', route: '/updateteacher', icon: 'movie'},
             {name: 'Update Student', route: '/updatestudent', icon: 'movie'},
-            {name: 'Give Permission', route: '/givepermission', icon: 'movie'},
+            {name: 'Give Permission', route: '/givepermission', icon: 'movie'}
           ];
           break;
         default:
@@ -80,7 +80,9 @@ export class AppComponent implements AfterViewInit, OnInit{
           break;
         case 'Admin':
           this.navItems = [
-            {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
+            {name: 'Update Teacher', route: '/updateteacher', icon: 'edit'},
+            {name: 'Update Student', route: '/updatestudent', icon: 'edit'},
+            {name: 'Give Permission', route: '/givepermission', icon: 'movie'}
           ];
           break;
         default:

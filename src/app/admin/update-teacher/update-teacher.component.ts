@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LectureVideosService } from '../../services/lecture-videos.service'
 import { FormGroup, FormBuilder, Validators, FormsModule, FormArray, FormControl } from '@angular/forms';
+import {AdminService} from '../../services/admin.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-teacher',
@@ -9,7 +10,8 @@ import { FormGroup, FormBuilder, Validators, FormsModule, FormArray, FormControl
 })
 export class UpdateTeacherComponent implements OnInit {
 
-  constructor(public lecture: LectureVideosService, public fb: FormBuilder) { }
+  constructor(private adminService: AdminService,
+              private snackBar: MatSnackBar) { }
 
   selected = '';
   selects = [];
@@ -50,6 +52,15 @@ export class UpdateTeacherComponent implements OnInit {
   }
 
   addTeacher(): void{
+    this.adminService.addTeacher(this.addTeachers.value).subscribe(res => {
+      console.log(res);
+      this.snackBar.open(this.addTeachers.value.name + ' added successfully', 'Close');
+    }, error => {
+      console.log(error);
+      switch (error.status) {
+        case 409: this.snackBar.open(error.error.error, 'Close'); break;
+      }
+    });
     console.log(this.addTeachers.value);
   }
 

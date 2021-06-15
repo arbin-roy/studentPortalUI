@@ -1,10 +1,17 @@
 .card {
   width: 220px;
-  height: 220px;
+  height: 200px;
   border-radius: 10px;
   margin-top: 30px;
   margin-left: 30px;
+  text-align: center;
   transition: 0.2s;
+  background-color: #f5f5f5;
+}
+
+.cardImage{
+  width: 120px;
+  height: 120px;
 }
 
 .card:hover{
@@ -13,8 +20,30 @@
   transition: 0.3s;
 }
 
+.uploadCardTitle{
+  font-size: larger;
+}
+
 .container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 190px;
+    height: 170px;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+  .cardImage{
+    width: 90px;
+    height: 90px;
+  }
+  .uploadCardTitle{
+    font-size: large;
+  }
 }

@@ -1,10 +1,11 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { TeacherUploadService} from '../../../services/teacher-upload.service';
 import { HttpEventType} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-upload-video',
@@ -32,24 +33,32 @@ export class UploadVideoComponent implements OnInit, OnDestroy {
   service: Subscription;
   serverResponse;
 
+  subjectLabel = 'Select Subject';
+  semLabel = 'Select Subject';
+
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,
               private uploadVideoService: TeacherUploadService,
               private snackBar: MatSnackBar,
-              private dialogRef: MatDialogRef<UploadVideoComponent>
+              private dialogRef: MatDialogRef<UploadVideoComponent>,
+              private breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
+    this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(state => {
+      if (state.matches) {
+        this.subjectLabel = 'Subject';
+        this.semLabel = 'Sem';
+      }
+    });
   }
 
-  // tslint:disable-next-line:typedef
-  handleFileInput(files) {
+  handleFileInput(files): void {
     this.fileToUpload = files.target.files[0];
     this.selectedVideo = this.fileToUpload.name;
   }
 
-  // tslint:disable-next-line:typedef
-  upload(){
+  upload(): void{
     if (this.videoForm.valid){
       this.service = this.uploadVideoService.uploadVideo(this.fileToUpload, this.videoForm.value).subscribe(event => {
         switch (event.type) {

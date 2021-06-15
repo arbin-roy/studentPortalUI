@@ -12,17 +12,17 @@ export class UploadComponent implements OnInit {
   uploadItems = [
     {
       title: 'PDF or Notes',
-      image: 'https://i2.wp.com/www.thenfapost.com/wp-content/uploads/2020/08/unnamed-2.png?fit=512%2C512&ssl=1',
+      image: '../../../assets/pdf.svg',
       desc: 'Click here to upload PDF\'s or notes'
     },
     {
       title: 'Video',
-      image: 'https://www.pngkit.com/png/full/267-2678423_bacteria-video-thumbnail-default.png',
+      image: '../../../assets/multimedia.svg',
       desc: 'Click here to upload video'
     },
     {
       title: 'Important Link\'s',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Chain_link_icon.png',
+      image: '../../../assets/link.svg',
       desc: 'Click here to upload a link'
     }
   ];

@@ -1,17 +1,18 @@
 <div class="container">
   <strong style="margin-top: 20px">{{dialogClosed ? dialogClosed: ''}}</strong>
-  <mat-card class="example-card" *ngFor="let note of notes">
-    <mat-card-header>
-      <mat-card-title> {{ note.title }}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="https://www.pngkit.com/png/full/267-2678423_bacteria-video-thumbnail-default.png"
-         alt="Loading..." class="example-header-image">
+  <mat-card class="card" *ngFor="let note of notes">
+    <mat-card-title class="uploadedNoteCardTitle"> {{ note.title }}</mat-card-title>
+    <img mat-card-image
+         src="../../../assets/pdf.svg"
+         alt="Loading..."
+         class="uploadedNoteCardImage"
+    >
     <mat-card-content>
-      <p style="text-align: center">
+      <p>
         {{ note.desc ? note.desc : 'No description provided'}}
       </p>
     </mat-card-content>
-    <mat-card-actions fxLayoutAlign="center center">
+    <mat-card-actions class="uploadedNoteCardActions">
       <button mat-button (click)="view(note)">
         <mat-icon> visibility </mat-icon>
       </button>

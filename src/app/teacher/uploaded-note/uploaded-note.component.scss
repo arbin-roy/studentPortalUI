@@ -3,13 +3,44 @@
   flex-flow: row wrap;
   justify-content: center;
 }
-.example-card {
-  min-width: 100px;
-  max-width: 280px;
-  min-height: 175px;
-  margin-bottom: 50px;
+.card {
+  width: 220px;
+  height: 260px;
+  margin-bottom: 30px;
   margin-top: 15px;
-  float: left;
   margin-left: 40px;
-  border-radius: 10px
+  border-radius: 10px;
+  text-align: center;
+}
+.uploadedNoteCardImage{
+  width: 120px;
+  height: 120px;
+}
+.uploadedNoteCardTitle{
+  font-size: larger;
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 170px;
+    height: 240px;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+  .uploadedNoteCardImage{
+    width: 90px;
+    height: 90px;
+  }
+  .cardTitle{
+    font-size: large;
+  }
+  .uploadedNoteCardActions{
+    button{
+      font-size: smaller;
+    }
+  }
+  .uploadedNoteCardTitle{
+    font-size: large;
+  }
 }

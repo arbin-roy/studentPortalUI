@@ -34,17 +34,6 @@ export class LectureVideosService {
     });
   }
 
-  addteacher():Observable<any>{
-    const data = {
-      name:"xyz abc",
-      dept:"BCA",
-      subjects:[{name:'Cybersecurity', code:'BCAN-100'}]
-    }
-    const headerConfig=new HttpHeaders()
-      .set('Authorization', sessionStorage.getItem('_token'));
-    return this.http.post(`${baseurl}admin/addteacher`, data, {headers:headerConfig});
-  }
-
   downloadVideo(title: string): Observable<Blob> {
     const headerConfig = new HttpHeaders()
       .set('Authorization', sessionStorage.getItem('_token'));
