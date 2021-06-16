@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {TeacherUploadService} from '../../../services/teacher-upload.service';
+import {TeacherService} from '../../../services/teacher.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
@@ -36,7 +36,7 @@ export class UploadNoteComponent implements OnInit {
 
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,
-              private uploadVideoService: TeacherUploadService,
+              private uploadVideoService: TeacherService,
               private snackBar: MatSnackBar,
               private dialogRef: MatDialogRef<UploadNoteComponent>,
               private breakpointObserver: BreakpointObserver) { }

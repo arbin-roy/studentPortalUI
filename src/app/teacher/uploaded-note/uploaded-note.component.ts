@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {TeacherUploadService} from '../../services/teacher-upload.service';
+import {TeacherService} from '../../services/teacher.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {NoNotesDialogComponent} from './no-notes-dialog/no-notes-dialog.component';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ViewPdfComponent} from './view-pdf/view-pdf.component';
 import * as fileSaver from 'file-saver';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-uploaded-note',
@@ -16,10 +17,11 @@ export class UploadedNoteComponent implements OnInit {
   notes = [];
   dialogClosed: string;
 
-  constructor(private teacherUploadService: TeacherUploadService,
+  constructor(private teacherUploadService: TeacherService,
               private snackBar: MatSnackBar,
               private dialog: MatDialog,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.teacherUploadService.getNotes().subscribe(result => {
@@ -40,12 +42,14 @@ export class UploadedNoteComponent implements OnInit {
 
   view(note): void {
     this.teacherUploadService.downloadPDF(note.title).subscribe(res => {
-      console.log(res)
+      console.log(res);
       note.link = window.URL.createObjectURL(this.returnBlob(res));
       this.dialog.open(ViewPdfComponent, {data: note, disableClose: true});
     }, error => {
       switch (error.status) {
-        case 401: this.snackBar.open('Session timed out. Please relogin again', 'Close');
+        case 401: this.snackBar.open('Session timed out', 'Close');
+                  this.authService.logout();
+                  break;
       }
     });
   }

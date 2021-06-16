@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthserviceService {
+export class AuthService {
 
    public user: string;
    public role: string;
-   isloggedin = new EventEmitter<any>();
+   isLoggedIn = new EventEmitter<any>();
+   isLoggedOut = new EventEmitter<any>();
    receivedToken: string;
 
   constructor(private http: HttpClient,
@@ -22,7 +23,7 @@ export class AuthserviceService {
 
   savedata(data: any): void {
     if (data){
-      this.isloggedin.emit(data);
+      this.isLoggedIn.emit(data);
       this.receivedToken = data.token;
       window.sessionStorage.setItem('_token', data.token);
       window.sessionStorage.setItem('_role', data.form.entity);
@@ -36,6 +37,7 @@ export class AuthserviceService {
 
   logout(): void{
     window.sessionStorage.clear();
+    this.isLoggedOut.emit();
     this.router.navigate(['/login']);
   }
 

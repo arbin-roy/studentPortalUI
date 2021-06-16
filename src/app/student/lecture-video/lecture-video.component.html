@@ -1,9 +1,6 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab *ngFor="let subjectCode of video" [label]="subjectCode.subjectCode" >
     <div class="container">
-      <!-- <div *ngIf="subject.videos.length == 0">
-        <p style="text-align: center"> No videos available for this subject</p>
-      </div> -->
       <mat-card class="example-card" *ngFor="let video of subjectCode.videos">
         <mat-card-header>
           <mat-card-title> {{ video.title }}</mat-card-title>

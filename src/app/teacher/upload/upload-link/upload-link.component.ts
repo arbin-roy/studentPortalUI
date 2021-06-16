@@ -1,7 +1,7 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { TeacherUploadService} from '../../../services/teacher-upload.service';
+import { TeacherService} from '../../../services/teacher.service';
 import {BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {Subscription} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -33,7 +33,7 @@ export class UploadLinkComponent implements OnInit {
 
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,
-              private uploadLinkService: TeacherUploadService,
+              private uploadLinkService: TeacherService,
               private snackBar: MatSnackBar,
               private dialogRef: MatDialogRef<UploadLinkComponent>,
               private breakpointObserver: BreakpointObserver

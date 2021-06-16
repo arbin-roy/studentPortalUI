@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthserviceService } from '../services/authservice.service';
+import { AuthService } from '../services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-loginstudent',
-  templateUrl: './loginstudent.component.html',
-  styleUrls: ['./loginstudent.component.scss']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class LoginstudentComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   hide = false;
   selected = '';
@@ -19,7 +19,7 @@ export class LoginstudentComponent implements OnInit {
   });
 
   constructor(public fb: FormBuilder,
-              private authService: AuthserviceService,
+              private authService: AuthService,
               public router: Router) {}
 
   ngOnInit(): void {

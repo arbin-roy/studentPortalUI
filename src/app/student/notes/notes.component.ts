@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewPdfComponent } from '../../teacher/uploaded-note/view-pdf/view-pdf.component'
-import { LectureVideosService } from '../../services/lecture-videos.service'
+import { StudentService } from '../../services/student.service'
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -14,7 +14,7 @@ import * as fileSaver from 'file-saver';
 export class NotesComponent implements OnInit {
 
   notes=[]
-  constructor(private lectureNote: LectureVideosService,
+  constructor(private lectureNote: StudentService,
               private snackBar: MatSnackBar,
               private dialog: MatDialog,
               private sanitizer: DomSanitizer) { }

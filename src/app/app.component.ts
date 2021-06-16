@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NavService} from './services/nav.service';
 import {Router} from '@angular/router';
-import {LoginstudentComponent} from './loginstudent/loginstudent.component';
-import {AuthserviceService} from './services/authservice.service';
+import {LoginComponent} from './login/login.component';
+import {AuthService} from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ export class AppComponent implements AfterViewInit, OnInit{
 
   constructor(public navService: NavService,
               private router: Router,
-              private auth: AuthserviceService){}
+              private auth: AuthService){}
 
   // tslint:disable-next-line:typedef
   ngAfterViewInit() {
@@ -25,13 +25,13 @@ export class AppComponent implements AfterViewInit, OnInit{
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.auth.isloggedin.subscribe(res => {
+    this.auth.isLoggedIn.subscribe(res => {
       switch (res.form.entity){
         case 'Student':
           this.navItems = [
             {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
             {name: 'Notes & PDF\'s & Ebooks', route: '/lecturenotes', icon: 'notes'},
-            {name: ' Important Links', route:'/links', icon:'launch'},
+            {name: ' Important Links', route: '/links', icon: 'launch'},
             {name: 'Syllabus', route: '/syllabus', icon: 'book'},
             {name: 'Upcoming Examinations', route: 'examination', icon: 'edit'},
             {name: 'Upcoming Activities', route: 'events', icon: 'event'},
@@ -40,10 +40,10 @@ export class AppComponent implements AfterViewInit, OnInit{
         case 'Teacher':
           this.navItems = [
             {name: 'Upload', route: '/upload', icon: 'upload'},
-            {name: 'Uploaded Videos', route: '/uploadedvideos', icon: 'upload'},
+            {name: 'Uploaded Videos', route: '/uploadedvideos', icon: 'video_library'},
             {name: 'Uploaded Notes', route: '/uploadednotes', icon: 'note'},
-            {name: 'Record Keeping', route: '/updaterecord', icon: 'note'},
-            {name: 'Uploaded Links', route: '/uploadedlinks', icon: 'note'}
+            {name: 'Record Keeping', route: '/updaterecord', icon: 'book'},
+            {name: 'Uploaded Links', route: '/uploadedlinks', icon: 'link'}
           ];
           break;
         case 'Admin':
@@ -72,10 +72,10 @@ export class AppComponent implements AfterViewInit, OnInit{
         case 'Teacher':
           this.navItems = [
             {name: 'Upload', route: '/upload', icon: 'upload'},
-            {name: 'Uploaded Videos', route: '/uploadedvideos', icon: 'upload'},
+            {name: 'Uploaded Videos', route: '/uploadedvideos', icon: 'video_library'},
             {name: 'Uploaded Notes', route: '/uploadednotes', icon: 'note'},
-            {name: 'Record Keeping', route: '/updaterecord', icon: 'note'},
-            {name: 'Uploaded Links', route: '/uploadedlinks', icon: 'note'}
+            {name: 'Record Keeping', route: '/updaterecord', icon: 'book'},
+            {name: 'Uploaded Links', route: '/uploadedlinks', icon: 'link'}
           ];
           break;
         case 'Admin':

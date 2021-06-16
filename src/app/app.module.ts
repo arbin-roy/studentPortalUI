@@ -10,10 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { NavService} from './services/nav.service';
 import { SyllabusComponent } from './student/syllabus/syllabus.component';
 import { VideoComponent } from './video/video.component';
-import { LoginstudentComponent } from './loginstudent/loginstudent.component';
+import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthserviceService} from './services/authservice.service';
+import { AuthService} from './services/auth.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import {UploadVideoComponent} from './teacher/upload/upload-video/upload-video.component';
 import { UploadedNoteComponent } from './teacher/uploaded-note/uploaded-note.component';
@@ -43,7 +43,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     routingPaths,
     SyllabusComponent,
     VideoComponent,
-    LoginstudentComponent,
+    LoginComponent,
     UploadVideoComponent,
     UploadedNoteComponent,
     UploadedLinkComponent ,
@@ -71,7 +71,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     PdfViewerModule,
     LayoutModule
   ],
-  providers: [NavService, AuthserviceService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+  providers: [NavService, AuthService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],
   bootstrap: [AppComponent]
 })

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
-import { VideoComponent} from '../video/video.component';
+import { VideoComponent} from '../../video/video.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {LectureVideosService} from '../services/lecture-videos.service'
+import {StudentService} from '../../services/student.service'
 import { DomSanitizer} from '@angular/platform-browser';
 import * as fileSaver from 'file-saver';
-import {AuthserviceService} from '../services/authservice.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-lecture-video',
@@ -16,10 +16,10 @@ export class LectureVideoComponent implements OnInit {
   video = [];
 
   constructor(private dialog: MatDialog,
-              private lecturevideos: LectureVideosService,
+              private lecturevideos: StudentService,
               private snackBar: MatSnackBar,
               private sanitizer: DomSanitizer,
-              private authService: AuthserviceService) { }
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.lecturevideos.getVideos().subscribe(res => {

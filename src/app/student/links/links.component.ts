@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LectureVideosService } from '../../services/lecture-videos.service'
+import { StudentService } from '../../services/student.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 
@@ -10,9 +10,9 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class LinksComponent implements OnInit {
 
-  link=[]
+  link = [];
   displayedColumns: string[] = ['Sr.No', 'link', 'desc'];
-  constructor(private lectureLinks: LectureVideosService,
+  constructor(private lectureLinks: StudentService,
               private snackBar: MatSnackBar,
               private dialog: MatDialog) { }
 
@@ -31,5 +31,4 @@ export class LinksComponent implements OnInit {
       }
     });
   }
-
 }

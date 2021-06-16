@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { baseurl} from '../../../../environments/environment';
-import {TeacherUploadService} from '../../../services/teacher-upload.service';
+import {TeacherService} from '../../../services/teacher.service';
 
 @Component({
   selector: 'app-view-pdf',
@@ -13,7 +13,7 @@ export class ViewPdfComponent implements OnInit {
   noteLink;
 
   constructor(@Inject( MAT_DIALOG_DATA ) public note: any,
-              public uploadedVideosService: TeacherUploadService) { }
+              public uploadedVideosService: TeacherService) { }
 
   ngOnInit(): void {}
 

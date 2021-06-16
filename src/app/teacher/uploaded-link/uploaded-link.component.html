@@ -1,20 +1,23 @@
 <table mat-table [dataSource]="links" class="mat-elevation-z8">
-
     <ng-container matColumnDef="Sr.No">
         <mat-header-cell *matHeaderCellDef> Sr.No </mat-header-cell>
         <mat-cell *matCellDef="let element; let i = index;">{{i+1}}</mat-cell>
     </ng-container>
-  
+
     <ng-container matColumnDef="link">
       <mat-header-cell *matHeaderCellDef> link </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <a href="{{element.link}}">{{element.link}} </a> </mat-cell>
+      <mat-cell
+        *matCellDef="let element"
+        (click)="openLink(element.link)"
+        style="cursor: pointer; color: blue"
+      > {{element.link}} </mat-cell>
     </ng-container>
-  
+
     <ng-container matColumnDef="desc">
       <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.desc}} </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-header-row *matHeaderRowDef = "displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </table>

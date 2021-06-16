@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavService} from '../services/nav.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {AuthserviceService} from '../services/authservice.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -24,9 +24,9 @@ export class HeaderComponent implements OnInit {
   public username: string;
 
   constructor(public navService: NavService,
-              public auth: AuthserviceService)
+              public auth: AuthService)
     {
-     this.auth.isloggedin.subscribe(res => {
+     this.auth.isLoggedIn.subscribe(res => {
           this.logged = true;
           this.username = res.data.name.split(' ')[0];
      });
@@ -37,6 +37,9 @@ export class HeaderComponent implements OnInit {
       this.logged = true;
       this.username = sessionStorage.getItem('_userName');
     }
+    this.auth.isLoggedOut.subscribe(() => {
+      this.logged = false;
+    });
   }
 
   rotate(): void {

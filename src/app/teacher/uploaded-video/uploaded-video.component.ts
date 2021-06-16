@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {TeacherUploadService} from '../../services/teacher-upload.service';
+import {TeacherService} from '../../services/teacher.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {VideoComponent} from '../../video/video.component';
 import {MatDialog} from '@angular/material/dialog';
 import { DomSanitizer} from '@angular/platform-browser';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-uploaded-video',
@@ -13,10 +14,11 @@ import { DomSanitizer} from '@angular/platform-browser';
 export class UploadedVideoComponent implements OnInit {
   videos = [];
 
-  constructor(private teacherUploadService: TeacherUploadService,
+  constructor(private teacherUploadService: TeacherService,
               private snackBar: MatSnackBar,
               private dialog: MatDialog,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.teacherUploadService.getVideos().subscribe(res => {
@@ -27,7 +29,9 @@ export class UploadedVideoComponent implements OnInit {
         case 404:
           this.snackBar.open(error.error.message, 'Close'); break;
         case 401:
-          this.snackBar.open('Session Timed Out', 'Close'); break;
+          this.snackBar.open('Session Timed Out', 'Close');
+          this.authService.logout();
+          break;
         case 0: this.snackBar.open('Server connection establishment failed', 'Close'); break;
       }
     });
