@@ -17,4 +17,20 @@ export class AdminService {
       headers: headerConfig
     });
   }
+  addSubject(data): Observable<object> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', window.sessionStorage.getItem('_token'));
+    return this.http.post(`${baseurl}admin/addsub`, data, {
+      headers: headerConfig
+    });
+  }
+
+  getSubject(): Observable<any> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', window.sessionStorage.getItem('_token'));
+    return this.http.get(`${baseurl}admin/getsub`, {
+      headers: headerConfig
+    });
+  }
+  
 }

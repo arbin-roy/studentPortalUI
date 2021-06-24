@@ -2,16 +2,18 @@
     <mat-tab *ngFor="let subjectCode of link; let j=index" [label]="subjectCode.subjectCode" >
        <div fxLayoutAlign="center center">
 
-            <table mat-table [dataSource]="link[j].links" class="mat-elevation-z8" >
+            <table mat-table [dataSource]="link[j].links" class="mat-elevation-z8" style="background-color:#eeffff;" >
 
-                <ng-container matColumnDef="Sr.No">
+                <ng-container matColumnDef="SrNo">
                     <mat-header-cell *matHeaderCellDef> Sr.No </mat-header-cell>
                     <mat-cell *matCellDef="let element; let i = index;">{{i+1}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="link">
                 <mat-header-cell *matHeaderCellDef> link </mat-header-cell>
-                <mat-cell *matCellDef="let element"> <a href="{{element.link}}">{{element.link}} </a> </mat-cell>
+                <mat-cell *matCellDef="let element" 
+                (click)="openLink(element.link)"
+                style="cursor: pointer; color: blue">{{element.link}}  </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="desc">

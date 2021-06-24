@@ -10,23 +10,20 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class UpdateTeacherComponent implements OnInit {
 
-  constructor(private adminService: AdminService,
-              private snackBar: MatSnackBar) { }
-
-  selected = '';
-  selects = [];
-  numbers = 1;
-  list = [];
   show = true;
+  display=true;
+  nodata=false;
 
-  Subjects = [
-    {subjectCode: 'BCAN-100', name: 'Cyber Security'},
-    {subjectCode: 'BCAN-200', name: 'Digital Marketing'},
-    {subjectCode: 'BCAN-300', name: 'Values & Ethic\'s'},
-    {subjectCode: 'BCAN-400', name: 'Digital Electronics'},
-    {subjectCode: 'BCAN-500', name: 'Data Structure'},
-    {subjectCode: 'BCAN-600', name: 'Python'}
-  ];
+  Subjects = [];
+  Departments=[];
+
+  constructor(private adminService: AdminService,
+              private snackBar: MatSnackBar,
+              private fb:FormBuilder) {
+                
+              }
+                
+  
 
   /* addteachers: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
@@ -40,15 +37,57 @@ export class UpdateTeacherComponent implements OnInit {
   addTeachers = new FormGroup({
     name: new FormControl(''),
     teacherId: new FormControl(''),
-    dept: new FormControl(''),
     password: new FormControl(''),
+    deptnum:new FormControl(''),
+    dept:new FormArray([]),
     subnum: new FormControl(''),
     subjects: new FormArray([])
   });
 
   subjects = this.addTeachers.get('subjects') as FormArray;
+  dept = this.addTeachers.get("dept") as FormArray
+
+  addDept(): void{
+    let i;
+    this.display = false;
+    for (i = 1; i <= this.addTeachers.value.deptnum ; i++){
+      const control = new FormControl(" ",Validators.required);
+      this.dept.push(control);
+    }
+  }
+  clearDept(): void{
+    this.dept.clear();
+    this.display = true;
+  } 
+
+  addSub(): void{
+    let i;
+    this.show = false;
+    for (i = 1; i <= this.addTeachers.value.subnum ; i++){
+      const control = new FormControl(" ",Validators.required);
+      this.subjects.push(control);
+    }
+  }
+
+  clearSub(): void{
+    this.subjects.clear();
+    this.show = true;
+  } 
 
   ngOnInit(): void {
+    this.adminService.getSubject().subscribe(result=>{
+      console.log(result.success)
+      if(result.success==true){
+        this.Subjects=result.data[0].subjects;
+        this.Departments=result.data[0].dept;
+      }
+      else{
+        this.Subjects=[{subjectName:"No subjects"}];
+        this.Departments=["No Dept"];
+        this.nodata=true;
+      }
+      console.log(this.Subjects,this.Departments)
+    })
   }
 
   addTeacher(): void{
@@ -64,17 +103,7 @@ export class UpdateTeacherComponent implements OnInit {
     console.log(this.addTeachers.value);
   }
 
-  add(): void{
-    let i;
-    this.show = false;
-    for (i = 1; i <= this.numbers ; i++){
-      const control = new FormControl('', Validators.required);
-      this.subjects.push(control);
-    }
-  }
+  
 
-  clear(): void{
-    this.subjects.clear();
-    this.show = true;
-  }
+ 
 }

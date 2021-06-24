@@ -15,15 +15,15 @@ export class UploadLinkComponent implements OnInit {
 
     linkForm: FormGroup = this.formBuilder.group({
     link: ['', [Validators.required, Validators.minLength(4)]],
+    dept:['', [Validators.required, Validators.minLength(4)]],
     subject: ['', [Validators.required]],
     semester: ['', [Validators.required]],
     desc: ['', [Validators.required, Validators.maxLength(100)]]
   });
-  subjects = [
-    {subjectCode: 'BCAN-100', name: 'Cyber Security'},
-    {subjectCode: 'BCAN-200', name: 'Digital Marketing'},
-    {subjectCode: 'BCAN-300', name: 'Values & Ethic\'s'}
-  ];
+
+  subjects = [ ];
+  depts=[];
+
   semesters = [1, 2, 3, 4, 5, 6];
   service: Subscription;
 
@@ -40,6 +40,10 @@ export class UploadLinkComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.uploadLinkService.getdetails().subscribe(result=>{
+      this.depts = result.depts,
+      this.subjects = result.subjects
+    })
     this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(state => {
       if (state.matches) {
         this.subjectLabel = 'Subject';

@@ -4,28 +4,24 @@
         <!-- <div *ngIf="subject.videos.length == 0">
           <p style="text-align: center"> No videos available for this subject</p>
         </div> -->
-        <mat-card class="example-card" *ngFor="let note of subjectCode.notes">
-          <mat-card-header>
-            <mat-card-title> {{ note.title }}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="https://www.pngkit.com/png/full/100-1009979_pdf-download-link-pdf-security-company-profile.png"
+        <mat-card class="example-card" *ngFor="let note of subjectCode.notes" style="background-color:skyblue ">
+            <mat-card-title style="text-align: center"> {{ note.title }}</mat-card-title>
+          <img mat-card-image src="../../../assets/pdf.svg"
+         style= "width: 120px;
+          height: 120px;"
             alt="Loading..." class="example-header-image" (click)="view(note)">
           <mat-card-content>
             <p style="text-align: center">
               {{ note.desc ? note.desc : 'No description provided'}}
             </p>
-          </mat-card-content>
-          <mat-card-actions>
             <button mat-button (click)="view(note)">
-              <mat-icon> visibility </mat-icon>
+              <mat-icon> visibility </mat-icon>WATCH
             </button>
             <button mat-button (click)="download(note.title)">
-              <mat-icon> file_download </mat-icon> 
+              <mat-icon> file_download </mat-icon>DOWNLOAD 
             </button>
-            <button mat-button>
-              <mat-icon> delete </mat-icon>
-            </button>
-          </mat-card-actions>
+          </mat-card-content>
+        
         </mat-card>
       </div>
     </mat-tab>

@@ -1,51 +1,33 @@
 table {
     width: 100%;
   }
+
   .mat-column-link {
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 35% !important;
-    width: 35% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    margin-left: 4px;
-    margin: 4px;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  
-  .mat-column-desc {
     word-wrap: break-word !important;
     white-space: unset !important;
     flex: 0 0 40% !important;
     width: 40% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    margin-left: 4px;
-    margin: 4px;
-  
+    border-right: 1px solid black;
     word-break: break-word;
   
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+    
+    display:flex;
+  justify-content:center;
   }
   
-  .mat-column-Sr.No {
+  .mat-column-desc {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 20% !important;
-    width: 20% !important;
+    flex: 0 0 45% !important;
+    width: 45% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    margin-left: 2px;
-    margin: 4px;
   
     word-break: break-word;
   
@@ -53,7 +35,34 @@ table {
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+    
+    display:flex;
+    justify-content:center;
   }
-  td.mat-cell, th.mat-header-cell {
+  
+  .mat-column-SrNo {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     text-align: center;
+    border-right: 1px solid currentColor;
+    text-align: center;
+    word-break: break-word;
+    
+    display:flex;
+    justify-content:center;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    
+  }
+ 
+  td.mat-cell, th.mat-header-cell {
+    display:flex;
+  justify-content:center;
   }

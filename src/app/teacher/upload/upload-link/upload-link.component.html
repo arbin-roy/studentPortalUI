@@ -22,6 +22,14 @@
         <mat-error *ngIf="!linkForm.controls['desc'].valid"> Please give valid details </mat-error>
         <mat-hint> Description will be help full </mat-hint>
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> Select Department </mat-label>
+        <mat-select formControlName="dept">
+            <mat-option *ngFor="let dept of depts" [value]="dept">
+                {{dept}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
       <table><tr>
         <td>
           <mat-form-field appearance="outline" class="selectSubject">

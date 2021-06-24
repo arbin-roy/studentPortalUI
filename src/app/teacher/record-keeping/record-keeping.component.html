@@ -1,1 +1,124 @@
-<p>record-keeping works!</p>
+<mat-card style="text-align: center; background-color: #ffebee;" >
+    <mat-card-content>
+        <div class="header" >
+            <P style="font-size: larger; font-weight:normal;">Add Record</P>
+        </div>
+        <form (ngSubmit)="addRecords()" name="addrecord" [formGroup]="addRecord">
+            <mat-form-field appearance="outline" style="margin-right: 5px;">
+                <mat-label> Semester </mat-label>
+                <mat-select formControlName="sem">
+                    <mat-option *ngFor="let sem of semesters" [value]="sem">
+                        {{sem}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <span></span>
+            <mat-form-field appearance="outline" style="margin-right: 5px;">
+                <mat-label> Course </mat-label>
+                <mat-select formControlName="course">
+                    <mat-option *ngFor="let course of Departments" [value]="course">
+                        {{course}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="margin-right: 5px;">
+                <mat-label> Subject </mat-label>
+                <mat-select formControlName="subject">
+                    <mat-option *ngFor="let subject of Subjects" [value]="subject">
+                        {{subject.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label>Topic Covered</mat-label>
+                    <input formControlName="topic_covered" matInput placeholder="Enter topics covered" required />
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label>Platform Used</mat-label>
+                    <input formControlName="platform_used" matInput placeholder="Platform Used" required />
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label> Session Recorded? </mat-label>
+                    <mat-select formControlName="whether_recorded">
+                        <mat-option *ngFor="let dec of Decisions" [value]="dec">
+                            {{dec}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline" style="margin-right: 5px;">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input  [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Start date">
+                    <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+                <!-- <mat-error *ngIf="time_range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="time_range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+            <!--  -->
+            <mat-form-field appearance="outline" style="margin-right: 5px; width:200px">
+                <mat-label>Date&Time</mat-label>
+                <input formControlName="date_time" matInput type="datetime-local" placeholder="start date">
+            </mat-form-field>
+            <div>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label>Duration</mat-label>
+                    <input formControlName="duration" type="number" matInput placeholder="Duration in minutes"
+                        required />
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label>Students Attended</mat-label>
+                    <input formControlName="students_attended" type="number" matInput placeholder="Students Attended"
+                        required />
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label>Total No. of Students</mat-label>
+                    <input formControlName="total_students" type="number" matInput placeholder="Total No. of Students"
+                        required />
+                </mat-form-field>
+            </div>
+            <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                <mat-label> Notes Given? </mat-label>
+                <mat-select formControlName="notes">
+                    <mat-option *ngFor="let dec of Decisions" [value]="dec">
+                        {{dec}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                <mat-label> Assignment Given? </mat-label>
+                <mat-select formControlName="assignment_given">
+                    <mat-option *ngFor="let dec of Decisions" [value]="dec">
+                        {{dec}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                <mat-label> Assignment Submitted? </mat-label>
+                <mat-select formControlName="assignment_submitted">
+                    <mat-option *ngFor="let dec of Decisions" [value]="dec">
+                        {{dec}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label> Conducted tests? </mat-label>
+                    <mat-select formControlName="test_conducted">
+                        <mat-option *ngFor="let dec of Decisions" [value]="dec">
+                            {{dec}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px;">
+                    <mat-label>Remarks</mat-label>
+                    <input formControlName="remarks" matInput placeholder="Remarks" required />
+                </mat-form-field>
+            </div>
+            <button mat-flat-button color="primary" type="submit">submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>

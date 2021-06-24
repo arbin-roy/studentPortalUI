@@ -11,24 +11,31 @@ import {MatDialog} from '@angular/material/dialog';
 export class LinksComponent implements OnInit {
 
   link = [];
-  displayedColumns: string[] = ['Sr.No', 'link', 'desc'];
+  displayedColumns: string[] = ['SrNo', 'link', 'desc'];
+
   constructor(private lectureLinks: StudentService,
               private snackBar: MatSnackBar,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog) { 
+                this.lectureLinks.getLinks().subscribe(res => {
+                  console.log(res);
+                  this.link = res.data;
+                }, error => {
+                  console.log(error);
+                  switch (error.status) {
+                    case 404:
+                      this.snackBar.open(error.error.message, 'Close'); break;
+                    case 401:
+                      this.snackBar.open(error.error, 'Close'); break;
+                    case 0: this.snackBar.open('Server connection establishment failed', 'Close'); break;
+                  }
+                });
+              }
 
   ngOnInit(): void {
-    this.lectureLinks.getLinks().subscribe(res => {
-      console.log(res);
-      this.link = res.data;
-    }, error => {
-      console.log(error);
-      switch (error.status) {
-        case 404:
-          this.snackBar.open(error.error.message, 'Close'); break;
-        case 401:
-          this.snackBar.open(error.error, 'Close'); break;
-        case 0: this.snackBar.open('Server connection establishment failed', 'Close'); break;
-      }
-    });
+    
+  }
+
+  openLink(url): void{
+    window.open(url);
   }
 }

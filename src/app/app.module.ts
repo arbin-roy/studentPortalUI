@@ -25,6 +25,7 @@ import { PdfViewerModule} from 'ng2-pdf-viewer';
 import { ViewPdfComponent } from './teacher/uploaded-note/view-pdf/view-pdf.component';
 import { NotesComponent } from './student/notes/notes.component';
 import { GivePermissionComponent } from './admin/give-permission/give-permission.component';
+import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
 import { UpdateStudentComponent } from './admin/update-student/update-student.component';
 import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component';
 import { EventsComponent } from './student/events/events.component';
@@ -55,6 +56,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     GivePermissionComponent,
     UpdateStudentComponent,
     UpdateTeacherComponent,
+    AddSubjectComponent,
     EventsComponent,
     LinksComponent,
     ExaminationsComponent,

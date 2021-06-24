@@ -17,6 +17,7 @@ import { RecordKeepingComponent } from './teacher/record-keeping/record-keeping.
 import { EventsComponent } from './student/events/events.component';
 import { ExaminationsComponent } from './student/examinations/examinations.component';
 import { LinksComponent } from './student/links/links.component';
+import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'}, // Default Route
@@ -65,6 +66,10 @@ const routes: Routes = [
       expectedRole: 'Admin'
     }
   },
+  {path: 'addsub', component: AddSubjectComponent, canActivate: [RouteGuardService], data: {
+    expectedRole: 'Admin'
+  }
+},
 
   // Teacher routes starts from here
 

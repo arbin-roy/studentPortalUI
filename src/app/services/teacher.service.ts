@@ -74,6 +74,14 @@ export class TeacherService {
     });
   }
 
+  getdetails(): Observable<any> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', sessionStorage.getItem('_token'));
+    return this.http.get(`${baseurl}teacher/getdetails`, {
+      headers: headerConfig
+    });
+  }
+
   downloadVideo(title: string): Observable<Blob> {
     const headerConfig = new HttpHeaders()
       .set('Authorization', sessionStorage.getItem('_token'));

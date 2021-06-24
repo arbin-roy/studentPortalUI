@@ -50,7 +50,8 @@ export class AppComponent implements AfterViewInit, OnInit{
           this.navItems = [
             {name: 'Update Teacher', route: '/updateteacher', icon: 'movie'},
             {name: 'Update Student', route: '/updatestudent', icon: 'movie'},
-            {name: 'Give Permission', route: '/givepermission', icon: 'movie'}
+            {name: 'Give Permission', route: '/givepermission', icon: 'movie'},
+            {name: 'Add Depts&Subs', route: '/addsub', icon: 'movie'}
           ];
           break;
         default:
@@ -63,10 +64,11 @@ export class AppComponent implements AfterViewInit, OnInit{
         case 'Student':
           this.navItems = [
             {name: 'Lecture Videos', route: '/lecturevideos', icon: 'movie'},
-            {name: 'Notes & PDF\'s & Ebooks', route: '#', icon: 'notes'},
+            {name: 'Notes & PDF\'s & Ebooks', route: '/lecturenotes', icon: 'notes'},
+            {name: ' Important Links', route: '/links', icon: 'launch'},
             {name: 'Syllabus', route: '/syllabus', icon: 'book'},
-            {name: 'Upcoming Examinations', route: '/studentlogin', icon: 'edit'},
-            {name: 'Upcoming Activities', route: '#', icon: 'local_activity'},
+            {name: 'Upcoming Examinations', route: 'examination', icon: 'edit'},
+            {name: 'Upcoming Activities', route: 'events', icon: 'event'},
           ];
           break;
         case 'Teacher':
@@ -82,7 +84,8 @@ export class AppComponent implements AfterViewInit, OnInit{
           this.navItems = [
             {name: 'Update Teacher', route: '/updateteacher', icon: 'edit'},
             {name: 'Update Student', route: '/updatestudent', icon: 'edit'},
-            {name: 'Give Permission', route: '/givepermission', icon: 'movie'}
+            {name: 'Give Permission', route: '/givepermission', icon: 'movie'},
+            {name: 'Add Depts&Subs', route: '/addsub', icon: 'movie'}
           ];
           break;
         default:
