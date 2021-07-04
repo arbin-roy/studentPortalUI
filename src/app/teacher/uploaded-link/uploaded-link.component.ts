@@ -20,7 +20,6 @@ export class UploadedLinkComponent implements OnInit {
 
   ngOnInit(): void {
     this.teacherUploadService.getLinks().subscribe(result => {
-      console.log(result.data)
       this.links = result.data;
       this.displayedColumns= ['SrNo', 'link', 'desc'];
     }, error => {

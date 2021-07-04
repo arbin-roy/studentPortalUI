@@ -16,6 +16,7 @@ export class TeacherService {
     body.append('title', values.title);
     body.append('subjectCode', values.subject);
     body.append('sem', values.semester);
+    body.append("dept",values.dept);
     if (values.desc.length !== 0) { body.append('desc', values.desc); }
     const headerConfig = new HttpHeaders()
       .set('Authorization', sessionStorage.getItem('_token'));
@@ -32,6 +33,7 @@ export class TeacherService {
     body.append('title', values.name);
     body.append('subjectCode', values.subject);
     body.append('sem', values.semester);
+    body.append("dept",values.dept);
     if (values.desc.length !== 0) { body.append('desc', values.desc); }
     const headerConfig = new HttpHeaders()
       .set('Authorization', sessionStorage.getItem('_token'));

@@ -16,15 +16,13 @@ export class UploadNoteComponent implements OnInit {
   noteForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
     note: ['', [Validators.required]],
+    dept: ['', [Validators.required]],
     subject: ['', [Validators.required]],
     semester: ['', [Validators.required]],
     desc: ['', [Validators.maxLength(100)]]
   });
-  subjects = [
-    {code: 'BCAN-100', name: 'Cyber Security'},
-    {code: 'BCAN-200', name: 'Digital Marketing'},
-    {code: 'BCAN-300', name: 'Values & Ethic\'s'}
-  ];
+  subjects = [];
+  depts=[]
   semesters = [1, 2, 3, 4, 5, 6];
   fileToUpload: File = null;
   uploadProgress: number;
@@ -36,7 +34,7 @@ export class UploadNoteComponent implements OnInit {
 
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,
-              private uploadVideoService: TeacherService,
+              private uploadNoteService: TeacherService,
               private snackBar: MatSnackBar,
               private dialogRef: MatDialogRef<UploadNoteComponent>,
               private breakpointObserver: BreakpointObserver) { }
@@ -48,7 +46,7 @@ export class UploadNoteComponent implements OnInit {
 
   upload(): void{
     if (this.noteForm.valid){
-      this.service = this.uploadVideoService.uploadNote(this.fileToUpload, this.noteForm.value).subscribe(event => {
+      this.service = this.uploadNoteService.uploadNote(this.fileToUpload, this.noteForm.value).subscribe(event => {
         switch (event.type) {
           case HttpEventType.UploadProgress:
             this.uploadProgress = Math.round( event.loaded / event.total * 100 );
@@ -77,6 +75,11 @@ export class UploadNoteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.uploadNoteService.getdetails().subscribe(result=>{
+      console.log(result.subjects)
+      this.depts = result.depts,
+      this.subjects = result.subjects
+    })
     this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(state => {
       if (state.matches) {
         this.subjectLabel = 'Subject';

@@ -4,7 +4,7 @@
         <!-- <div *ngIf="subject.videos.length == 0">
           <p style="text-align: center"> No videos available for this subject</p>
         </div> -->
-        <mat-card class="example-card" *ngFor="let note of subjectCode.notes" style="background-color:skyblue ">
+        <mat-card class="example-card" *ngFor="let note of subjectCode.notes" style="background-color:#ffcc80 ">
             <mat-card-title style="text-align: center"> {{ note.title }}</mat-card-title>
           <img mat-card-image src="../../../assets/pdf.svg"
          style= "width: 120px;
@@ -15,7 +15,7 @@
               {{ note.desc ? note.desc : 'No description provided'}}
             </p>
             <button mat-button (click)="view(note)">
-              <mat-icon> visibility </mat-icon>WATCH
+              <mat-icon> visibility </mat-icon>VIEW
             </button>
             <button mat-button (click)="download(note.title)">
               <mat-icon> file_download </mat-icon>DOWNLOAD 

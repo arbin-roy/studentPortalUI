@@ -15,7 +15,7 @@ export class UploadLinkComponent implements OnInit {
 
     linkForm: FormGroup = this.formBuilder.group({
     link: ['', [Validators.required, Validators.minLength(4)]],
-    dept:['', [Validators.required, Validators.minLength(4)]],
+    dept:['', [Validators.required]],
     subject: ['', [Validators.required]],
     semester: ['', [Validators.required]],
     desc: ['', [Validators.required, Validators.maxLength(100)]]
@@ -26,7 +26,7 @@ export class UploadLinkComponent implements OnInit {
 
   semesters = [1, 2, 3, 4, 5, 6];
   service: Subscription;
-
+  deptlabel =" Select Department "
   subjectLabel = 'Select Subject';
   semLabel = 'Select Semester';
 
@@ -41,6 +41,7 @@ export class UploadLinkComponent implements OnInit {
 
   ngOnInit(): void {
     this.uploadLinkService.getdetails().subscribe(result=>{
+      console.log(result.subjects)
       this.depts = result.depts,
       this.subjects = result.subjects
     })

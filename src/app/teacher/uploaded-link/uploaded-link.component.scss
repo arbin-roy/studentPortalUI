@@ -11,7 +11,8 @@ table {
     word-wrap: break-word;
     border-right: 1px solid black;
     word-break: break-word;
-  
+    
+
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
@@ -51,7 +52,7 @@ table {
     border-right: 1px solid currentColor;
     text-align: center;
     word-break: break-word;
-    
+    padding-right: 2px;
     display:flex;
     justify-content:center;
 

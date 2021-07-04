@@ -17,15 +17,13 @@ export class UploadVideoComponent implements OnInit, OnDestroy {
   videoForm: FormGroup = this.formBuilder.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
     video: ['', [Validators.required]],
+    dept: ['', [Validators.required]],
     subject: ['', [Validators.required]],
     semester: ['', [Validators.required]],
     desc: ['', [Validators.maxLength(100)]]
   });
-  subjects = [
-    {subjectCode: 'BCAN-100', name: 'Cyber Security'},
-    {subjectCode: 'BCAN-200', name: 'Digital Marketing'},
-    {subjectCode: 'BCAN-300', name: 'Values & Ethic\'s'}
-  ];
+  subjects = [];
+  depts=[]
   semesters = [1, 2, 3, 4, 5, 6];
   fileToUpload: File = null;
   uploadProgress: number;
@@ -45,6 +43,11 @@ export class UploadVideoComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.uploadVideoService.getdetails().subscribe(result=>{
+      console.log(result.subjects)
+      this.depts = result.depts,
+      this.subjects = result.subjects
+    })
     this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(state => {
       if (state.matches) {
         this.subjectLabel = 'Subject';

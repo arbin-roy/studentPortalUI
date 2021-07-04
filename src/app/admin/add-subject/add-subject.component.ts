@@ -25,7 +25,6 @@ export class AddSubjectComponent implements OnInit {
                 })
   }
 
-
   subject(): FormArray {
     return this.addSubs.get("subject") as FormArray
   }

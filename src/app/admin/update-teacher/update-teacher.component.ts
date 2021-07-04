@@ -22,17 +22,6 @@ export class UpdateTeacherComponent implements OnInit {
               private fb:FormBuilder) {
                 
               }
-                
-  
-
-  /* addteachers: FormGroup = this.fb.group({
-    name: ['', [Validators.required]],
-    dept: ['', [Validators.required]],
-    teacherId: ['', [Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    subnum: ['', [Validators.required]],
-    subjects:([])
-  }); */
 
   addTeachers = new FormGroup({
     name: new FormControl(''),

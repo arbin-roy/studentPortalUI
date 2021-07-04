@@ -34,13 +34,25 @@
       </button>
       <table><tr>
         <td>
+          <mat-form-field appearance="outline">
+            <mat-label> Select Department </mat-label>
+            <mat-select formControlName="dept" required>
+                <mat-option 
+                *ngFor="let dept of depts"
+                 [value]="dept">
+                    {{dept}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        </td>
+        <td>
           <mat-form-field appearance="outline" class="selectSubject">
             <mat-label> {{ subjectLabel }} </mat-label>
             <mat-select formControlName="subject" required>
               <mat-option
                 *ngFor="let subject of subjects"
                 [value]="subject.subjectCode">
-                {{subject.name}}
+                {{subject.subjectName}}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="!videoForm.controls['subject'].valid"> Please choose subject </mat-error>
