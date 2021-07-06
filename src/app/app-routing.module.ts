@@ -18,6 +18,7 @@ import { EventsComponent } from './student/events/events.component';
 import { ExaminationsComponent } from './student/examinations/examinations.component';
 import { LinksComponent } from './student/links/links.component';
 import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
+import { NotFoundComponentComponent} from './not-found-component/not-found-component.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'}, // Default Route
@@ -92,7 +93,8 @@ const routes: Routes = [
   {path: 'uploadedlinks', component: UploadedLinkComponent, canActivate: [RouteGuardService], data: {
       expectedRole: 'Teacher'
     }
-  }
+  },
+  {path: '**', component: NotFoundComponentComponent}
 ];
 
 @NgModule({
@@ -115,5 +117,6 @@ export const routingPaths = [
   UpdateTeacherComponent,
   RecordKeepingComponent,
   EventsComponent,
-  ExaminationsComponent
+  ExaminationsComponent,
+  NotFoundComponentComponent
 ];

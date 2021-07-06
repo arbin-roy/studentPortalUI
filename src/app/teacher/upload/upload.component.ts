@@ -11,7 +11,7 @@ import { UploadLinkComponent } from './upload-link/upload-link.component'
 export class UploadComponent implements OnInit {
   uploadItems = [
     {
-      title: 'PDF or Notes',
+      title: 'Study Materials',
       image: '../../../assets/pdf.svg',
       desc: 'Click here to upload PDF\'s or notes'
     },
@@ -35,9 +35,8 @@ export class UploadComponent implements OnInit {
   openDialog(item: string): void {
     switch (item) {
       case 'Video': this.dialog.open(UploadVideoComponent, {disableClose: true, data: item}); break;
-      case 'PDF or Notes': this.dialog.open(UploadNoteComponent, {disableClose: true, data: item}); break;
+      case 'Study Materials': this.dialog.open(UploadNoteComponent, {disableClose: true, data: item}); break;
       case 'Important Link\'s': this.dialog.open(UploadLinkComponent, {disableClose: true, data: item}); break;
     }
   }
-
 }

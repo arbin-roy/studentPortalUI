@@ -1,25 +1,27 @@
-<div *ngIf="links.length>0">
-<table mat-table [dataSource]="links" class="mat-elevation-z8" style="background-color:#eeffff;">
-    <ng-container matColumnDef="SrNo" fxLayoutAlign="center center">
-        <mat-header-cell *matHeaderCellDef> Sr.No </mat-header-cell>
-        <mat-cell *matCellDef="let element; let i = index;">{{i+1}}</mat-cell>
-    </ng-container>
+<div>
+  <div *ngIf="links.length>0">
+    <table mat-table [dataSource]="links" class="mat-elevation-z8" style="background-color:#eeffff; width: ">
+        <ng-container matColumnDef="SrNo" fxLayoutAlign="center center">
+            <mat-header-cell *matHeaderCellDef> Sr.No </mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index;">{{i+1}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="link" fxLayoutAlign="center center" style="padding-left: 2px;">
-      <mat-header-cell *matHeaderCellDef> link </mat-header-cell>
-      <mat-cell
-        *matCellDef="let element"
-        (click)="openLink(element.link)"
-        style="cursor: pointer; color: blue"
-      > {{element.link}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="link" fxLayoutAlign="center center" style="padding-left: 2px;">
+          <mat-header-cell *matHeaderCellDef> link </mat-header-cell>
+          <mat-cell
+            *matCellDef="let element"
+            (click)="openLink(element.link)"
+            style="cursor: pointer; color: blue"
+          > {{element.link}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="desc" fxLayoutAlign="center center">
-      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.desc}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="desc" fxLayoutAlign="center center">
+          <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.desc}} </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef = "displayedColumns" style="font-weight: bolder;"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</table>
+        <mat-header-row *matHeaderRowDef = "displayedColumns" style="font-weight: bolder;"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+  </div>
 </div>

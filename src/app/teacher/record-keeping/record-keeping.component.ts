@@ -8,7 +8,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
   templateUrl: './record-keeping.component.html',
   styleUrls: ['./record-keeping.component.scss']
 })
-export class RecordKeepingComponent implements OnInit { 
+export class RecordKeepingComponent implements OnInit {
 
   Departments=[];
   Subjects = [];
@@ -19,9 +19,10 @@ export class RecordKeepingComponent implements OnInit {
 
   ngOnInit(): void {
     this.teacherService.getdetails().subscribe(result=>{
-      this.Departments = result.depts,
-      this.Subjects = result.subjects
-    })
+      console.log(result);
+      this.Departments = result.depts;
+      this.Subjects = result.subjects;
+    });
   }
 
   addRecord = new FormGroup({
@@ -43,12 +44,21 @@ export class RecordKeepingComponent implements OnInit {
     test_conducted: new FormControl(''),
     remarks: new FormControl(''),
   });
-semesters=[1,2,3,4,5,6];
+  semesters=[1,2,3,4,5,6];
 
+  Decisions=["Yes","No"];
 
-Decisions=["Yes","No"];
+  addRecords(){
+    console.log(this.addRecord.value);
+  }
 
-addRecords(){
-  console.log(this.addRecord.value);
-}
+  onSubmit(): void {
+    this.teacherService.recordKeeping(this.addRecord.value).subscribe(result => {
+      if (result.success){
+        this.snackBar.open(result.message, 'Close');
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
 }

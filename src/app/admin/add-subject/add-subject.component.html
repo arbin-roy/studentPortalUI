@@ -1,48 +1,49 @@
-<mat-card style="text-align: center;">
+<div style="display: flex; justify-content: center">
+  <mat-card>
     <mat-card-content>
-        <P class="header">Add Departments and Subjects</P>
-
-        <form (ngSubmit)="addSub()" name="addsub" [formGroup]="addSubs">
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Department</mat-label>
-                <input formControlName="dept" matInput placeholder="Enter Department" required />
-            </mat-form-field>
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label> Select Semester </mat-label>
-                    <mat-select formControlName="sem">
-                        <mat-option *ngFor="let sem of semesters" [value]="sem">
-                            {{sem}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+      <P class="header">Add Departments and Subjects</P>
+      <form (ngSubmit)="addSub()" name="addsub" [formGroup]="addSubs">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Department</mat-label>
+          <input formControlName="dept" matInput placeholder="Enter Department" required />
+        </mat-form-field>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label> Select Semester </mat-label>
+            <mat-select formControlName="sem">
+              <mat-option *ngFor="let sem of semesters" [value]="sem">
+                {{sem}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div formArrayName="subject">
+          <div *ngFor="let sub of subject().controls; let subIndex=index"
+               style="border: 1px solid black; max-width: 600px; margin: 5px; ">
+            <div [formGroupName]="subIndex">
+              <mat-form-field class="full-width" appearance="outline"
+                              style="margin-right: 20px;margin-top: 10px;">
+                <mat-label>Subject Name</mat-label>
+                <input formControlName="subjectName" matInput placeholder="Enter Subject name" required />
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline"
+                              style="margin-right: 20px; margin-top: 10px;">
+                <mat-label>Subject Code</mat-label>
+                <input formControlName="subjectCode" matInput placeholder="Enter Subject Code" required />
+              </mat-form-field>
             </div>
-            <div formArrayName="subject">
-                <div *ngFor="let sub of subject().controls; let subIndex=index"
-                    style="border: 1px solid black; max-width: 600px; margin: 5px; ">
-                    <div [formGroupName]="subIndex">
-                        <mat-form-field class="full-width" appearance="outline"
-                            style="margin-right: 20px;margin-top: 10px;">
-                            <mat-label>Subject Name</mat-label>
-                            <input formControlName="subjectName" matInput placeholder="Enter Subject name" required />
-                        </mat-form-field>
-                        <mat-form-field class="full-width" appearance="outline"
-                            style="margin-right: 20px; margin-top: 10px;">
-                            <mat-label>Subject Code</mat-label>
-                            <input formControlName="subjectCode" matInput placeholder="Enter Subject Code" required />
-                        </mat-form-field>
-                    </div>
-                    <button (click)="removeSubject(subIndex)" type="button" mat-flat-button
-                        color="primary">Remove</button>
-                    <br><br>
-                </div>
-            </div>
-            <button mat-flat-button color="primary" type="button" (click)="addSubject()">Add Subject</button>
-            <br>
-            <br>
-            <div>
-                <button mat-flat-button color="primary" type="submit">submit</button>
-            </div>
-        </form>
+            <button (click)="removeSubject(subIndex)" type="button" mat-flat-button
+                    color="primary">Remove</button>
+            <br><br>
+          </div>
+        </div>
+        <button mat-flat-button color="primary" type="button" (click)="addSubject()">Add Subject</button>
+        <br>
+        <br>
+        <div>
+          <button mat-flat-button color="primary" type="submit">submit</button>
+        </div>
+      </form>
     </mat-card-content>
-</mat-card>
+  </mat-card>
+</div>

@@ -105,4 +105,12 @@ export class TeacherService {
     };
     return this.http.get(`${baseurl}teacher/downloadNote`, {...options, responseType: 'blob'});
   }
+
+  recordKeeping(values): Observable<any> {
+    const headerConfig = new HttpHeaders()
+      .set('Authorization', window.sessionStorage.getItem('_token'));
+    return this.http.post(`${baseurl}teacher/recordKeeping`, values, {
+      headers: headerConfig
+    });
+  }
 }

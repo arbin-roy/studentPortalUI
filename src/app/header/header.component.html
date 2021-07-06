@@ -1,5 +1,5 @@
 <mat-toolbar  style="height: 10vh; background-color: #e91e63;">
-  <button *ngIf ="logged" mat-icon-button >
+  <button *ngIf ="logged" mat-icon-button style="color: white">
     <mat-icon  (click)="navService.touggleNav()">menu</mat-icon>
   </button>
   <a href="https://www.bcrecapc.ac.in/">
@@ -9,9 +9,9 @@
       class="header-image">
   </a>
   <span class="headerText">{{ title }}</span>
-  <a *ngIf="logged" mat-button routerLink="/notice"> Notices </a>
+  <a *ngIf="logged" mat-button routerLink="/notice" style="color: white"> Notices </a>
   <span class="example-spacer"></span>
-  <a *ngIf="!logged" mat-button routerLink="/notice"> Notices </a>
+  <a *ngIf="!logged" mat-button routerLink="/notice" style="color: white"> Notices </a>
   <div *ngIf="logged">
   <button mat-raised-button [matMenuTriggerFor]="menu" class="headerMenuButton" (click)="rotate()"
           (menuClosed)="state = 'collapsed'">

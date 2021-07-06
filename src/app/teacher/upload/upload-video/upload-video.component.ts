@@ -32,7 +32,7 @@ export class UploadVideoComponent implements OnInit, OnDestroy {
   serverResponse;
 
   subjectLabel = 'Select Subject';
-  semLabel = 'Select Subject';
+  semLabel = 'Select Semester';
 
   constructor(@Inject( MAT_DIALOG_DATA ) public item: any,
               private formBuilder: FormBuilder,

@@ -1,53 +1,54 @@
-<mat-card fxLayoutAlign="centre centre">
-  <mat-card-content>
-    <div class="header">
-      <P>Add Teacher</P>
-    </div>
-    <form (ngSubmit)="addTeacher()" name="addteachers" [formGroup]="addTeachers">
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Name</mat-label>
-        <input formControlName="name" matInput placeholder="Enter teacher name" required />
-        <mat-error *ngIf="!addTeachers.controls['name'].valid">
-          give valid name
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>TeacherId</mat-label>
-        <input formControlName="teacherId" matInput placeholder="Enter teacherId" required />
-        <mat-error *ngIf="!addTeachers.controls['teacherId'].valid">
-          give valid TeacherID
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Password</mat-label>
-        <input formControlName="password" matInput placeholder="Enter password" required />
-        <mat-error *ngIf="!addTeachers.controls['password'].valid">
-          give valid Password
-        </mat-error>
-      </mat-form-field>
-      <div>
+<div style="display: flex; justify-content: center">
+  <mat-card>
+    <mat-card-content>
+      <div class="header">
+        <P>Add Teacher</P>
+      </div>
+      <form (ngSubmit)="addTeacher()" name="addteachers" [formGroup]="addTeachers">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>DeptNo</mat-label>
-          <input formControlName="deptnum" matInput placeholder="no. of dept" required />
-          <mat-error *ngIf="!addTeachers.controls['deptnum'].valid">
-            enter the number of deptartments
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput placeholder="Enter teacher name" required />
+          <mat-error *ngIf="!addTeachers.controls['name'].valid">
+            give valid name
           </mat-error>
         </mat-form-field>
-        <button mat-raised-button type="button" (click)="addDept()" [disabled]="!display">Add</button>
-        <button mat-raised-button type="button" (click)="clearDept()" [disabled]="display">Clear</button>
-      </div>
-      <ng-container formArrayName="dept">
-        <div *ngFor="let g of dept.controls; let i=index">
-          <mat-form-field appearance="outline">
-            <mat-label> Select Department </mat-label>
-            <mat-select [formControlName]="i">
-              <mat-option *ngFor="let dept of Departments" [value]="dept">
-                {{dept}}
-              </mat-option>
-            </mat-select>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>TeacherId</mat-label>
+          <input formControlName="teacherId" matInput placeholder="Enter teacherId" required />
+          <mat-error *ngIf="!addTeachers.controls['teacherId'].valid">
+            give valid TeacherID
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput placeholder="Enter password" required />
+          <mat-error *ngIf="!addTeachers.controls['password'].valid">
+            give valid Password
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>DeptNo</mat-label>
+            <input formControlName="deptnum" matInput placeholder="no. of dept" required />
+            <mat-error *ngIf="!addTeachers.controls['deptnum'].valid">
+              enter the number of deptartments
+            </mat-error>
           </mat-form-field>
+          <button mat-raised-button type="button" (click)="addDept()" [disabled]="!display">Add</button>
+          <button mat-raised-button type="button" (click)="clearDept()" [disabled]="display">Clear</button>
         </div>
-      </ng-container>
+        <ng-container formArrayName="dept">
+          <div *ngFor="let g of dept.controls; let i=index">
+            <mat-form-field appearance="outline">
+              <mat-label> Select Department </mat-label>
+              <mat-select [formControlName]="i">
+                <mat-option *ngFor="let dept of Departments" [value]="dept">
+                  {{dept}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </ng-container>
         <div>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>SubNo</mat-label>
@@ -72,6 +73,7 @@
           </div>
         </ng-container>
         <button mat-flat-button color="primary" type="submit" [disabled]="nodata">submit</button>
-    </form>
-  </mat-card-content>
-</mat-card>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
